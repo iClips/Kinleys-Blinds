@@ -300,6 +300,7 @@ nav.navbar ul.nav > li > a:hover,nav.navbar ul.nav > li > a:focus {
 .home .carousel {
     position: relative;
     height: 700px;
+    width: 100%;
     display: inline-block;
 }
 .home .carousel .item img {
