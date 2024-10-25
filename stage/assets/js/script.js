@@ -35,12 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
     
     animateHero();
     initIntoViewAnim();
-    setMenuClickEvent();
-});
-
-function setMenuClickEvent() {
+    
+    
     let isMenuOpen = false;
-    document.getElementById("menu-icon").addEventListener("click", function() {
+    document.getElementById("myMenu").addEventListener("click", function() {
         if (!isMenuOpen) {
             document.getElementById("side-menu").style.width = "250px";
             isMenuOpen = true;
@@ -49,7 +47,7 @@ function setMenuClickEvent() {
             isMenuOpen = false
         }
     });
-}
+});
 
 
 function animateHero() {

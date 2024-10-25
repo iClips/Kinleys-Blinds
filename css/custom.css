@@ -714,23 +714,25 @@ nav.navbar ul.nav > li > a:hover,nav.navbar ul.nav > li > a:focus {
 #message_success {
     margin-top: 40px;
 }
-/* Footer */
+
+/********************** Footer ************************/
+
 footer {
     background: url(../images/footer_bg.jpg)no-repeat;
     background-size:cover;
     position:relative;
     padding-top:45px;
 }
-/*footer::before {*/
-/*    background: rgba(255, 255, 255, 0.33) none repeat scroll 0 0;*/
-/*    content: "";*/
-/*    height: 45px;*/
-/*    left: 0;*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    width: 100%;*/
-/*    z-index: 1;*/
-/*}*/
+footer::before {
+   background: rgba(255, 255, 255, 0.33) none repeat scroll 0 0;
+   content: "";
+   height: 45px;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+   z-index: 1;
+}
 footer::after {
     /*background: rgba(34, 37, 51, 0.9) none repeat scroll 0 0;*/
     background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
@@ -784,10 +786,12 @@ footer::after {
 .list-unstyled.footer_menu > li {
     padding: 4px 0;
 }
-/* Footer Post */
+
 .list-unstyled.post,.list-unstyled.footer_contact {
     margin-top: -14px;
 }
+
+
 .post .date {
     border: 2px solid #fff;
     border-radius: 100%;
@@ -838,6 +842,9 @@ footer::after {
 .footer_bottom a:hover,.footer_bottom a:focus {
     color: #d7a300;
 }
+
+/********************** /Footer ************************/
+
 /* ScrollUP */
 #scrollUp {
     background: url(../images/top.png)no-repeat scroll 0 0;
@@ -1103,9 +1110,6 @@ footer::after {
     }
     .about_content > h3 {
         font-size: 24px;
-    }
-    .about_banner > img {
-        /*width: 100%;*/
     }
     #filters > button {
         font-size: 14px;

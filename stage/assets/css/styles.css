@@ -40,6 +40,8 @@ body {
 body a {
     text-decoration: none;
 }
+
+
 /********************* Header **********************/
 
 header {
@@ -57,8 +59,11 @@ header {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); 
     backdrop-filter: blur(10px);
     transition: transform 0.3s, box-shadow 0.3s;
-    padding: 12px 1.2em;
-    transition: all .50s ease;
+    padding: 16px 24px;
+}
+
+header:hover {
+    box-shadow: 0 4px 15px rgba(103, 139, 5, 0.901);
 }
 
 .logo {
@@ -81,27 +86,22 @@ header {
 
 
 header .navbar {
-    display: flex;    
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
     padding: 0;
-    margin: 0;
-}
-
-header .navbar li {
-    margin: 0 15px;
+    margin: 0;    
 }
 
 header .navbar a {
     color: white;    
-    font-size: 1.2em;
+    font-size: clamp(1rem, 1vw + 0.5rem, 1.25rem);
 }
 
 header .navbar a.active {
     border-bottom: 2px solid #6200ff;
-}
-
-header .flex-row {
-    display: flex;
-    align-items: center;
 }
 
 header .social {
@@ -119,11 +119,6 @@ header .social a {
     font-size: 24px;    
 }
 
-#menu-icon {
-    display: none;
-    font-size: 24px;
-    color: white;
-}
 
 .side-menu {
     height: 100%;
@@ -178,11 +173,37 @@ header .social a {
     margin-bottom: 0;
 }
 
-#menu-icon {
+#myMenu {
   color: #fff;
   cursor: pointer;
   z-index: 10001;
   display: none;
+  background: transparent;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.nav li {
+    display: inline-block;
+}
+
+.nav .menu-item {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--color-menu-item);
+    
+    padding: var(--padding-box);
+    transition: color 0.3s;
+}
+
+.nav .menu-item:hover {
+    color: var(--color-menu-item-hover);
 }
 
 /********************** Hero **********************/
@@ -547,7 +568,7 @@ a .fa {
         display: none;
     }
     
-    #menu-icon {
+    #myMenu {
         display: block;
     }
 
@@ -599,3 +620,182 @@ a .fa {
         font-size: 1.4em;
     }   
 }
+
+/****************** About Us ***********************/
+
+#about {
+    padding: 50px 0;
+    background: #f3f3f3;
+    position: relative;
+}
+
+.section-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    position: relative;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.subheading {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.about-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.about-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.special-offer {
+    margin-top: 20px;
+    background: #ffe600;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.special-offer h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.special-offer ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.special-offer ul li {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.special-offer ul li i {
+    color: #28a745;
+    margin-right: 8px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-box {
+        margin-bottom: 20px;
+    }
+}
+
+/****************** /About Us ***********************/
+
+
+/****************** Testimonials ***********************/
+
+#testimonial {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+}
+
+#testimonial h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#testimonial .intro-text {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 1.1em;
+    color: #666;
+}
+
+.testimonial_item {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial_item:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial_content p {
+    font-style: italic;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-top: 15px;
+    object-fit: cover;
+}
+
+.worker_name {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .testimonial_item {
+        margin-bottom: 20px;
+    }
+}
+
+/****************** /Testimonials ***********************/
+
+/****************** Footer ***********************/
+
+footer {
+    background: url(../images/footer_bg.jpg)no-repeat;
+    background-size:cover;
+    background-position: center;
+    position:relative;
+    padding: 16px 24px;
+    height: 300px;
+}
+
+footer::after {
+    background: rgb(34 45 57 / 92%);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+/****************** /Footer ***********************/
