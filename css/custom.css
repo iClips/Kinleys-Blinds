@@ -542,7 +542,6 @@ nav.navbar ul.nav > li > a:hover,nav.navbar ul.nav > li > a:focus {
     top: 0;
     position: absolute;
     text-align: center;
-    opacity:0;
 }
 .grid-item:hover .portfolio_hover_area {opacity: 1;}
 .portfolio_hover_area .fa {

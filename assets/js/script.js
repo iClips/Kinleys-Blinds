@@ -1,3 +1,13 @@
+window.onload = function() {
+    var loadingElement = document.getElementById("loading");
+    loadingElement.style.transition = "opacity 0.5s"; 
+    loadingElement.style.opacity = "0"; 
+
+    setTimeout(function() {
+        loadingElement.style.display = "none";
+    }, 500); 
+};
+
 var heroAnimationInterval = null;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -121,3 +131,28 @@ function toggleMenu() {
     const navBar = document.getElementById('navBar');
     navBar.classList.toggle('active');
 }
+
+let lastScrollTop = 0;
+const topNav = document.querySelector('.top_nav');
+const navBar = document.getElementById('navBar');
+
+window.addEventListener('scroll', function() {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+        // Scrolling down
+        topNav.classList.add('hidden'); // Hide top_nav
+        navBar.classList.add('show'); // Show navbar
+    } else {
+        // Scrolling up
+        if (currentScroll <= 0) {
+            // When at the top
+            topNav.classList.remove('hidden');
+            navBar.classList.remove('show');
+        } else {
+            navBar.classList.add('show'); // Keep navbar visible
+        }
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+});
