@@ -6,62 +6,18 @@
     --color-primary-lighter: #789af5;
     --color-contact: #cdc4c4;
 
-    --padding-content: 16px;
+    --padding-content: 16px 24px;
     --padding-card: 12px;
-    --padding-titlebar: 8px 16px;
+    --padding-titlebar: var(--padding-content);
     --padding-section: 24px;
-}
-
-.light-theme {
-    --border-radius: 8px;
-    --background-color: #f8f9fa;
-    --text-color: #333;
-    --titlebar-background: linear-gradient(45deg, #000000eb, #73b0ffde);
+    
+    --titlebar-background: linear-gradient(45deg, #000000eb, #73b0ffeb);
+    --titlebar-background-hover: linear-gradient(45deg, #000000eb, #c18bbceb);
     --title-color: white;
     --button-background: #0078d4;
     --button-text-color: #ffffff;
     --button-hover-background: #005a9edd;
     --button-hover-text-color: #f1f1f1;
-
-    --input-background: #f9f9f9;
-    --input-border: #0078d4;
-    --dropdown-background: #ffffff;
-    --dropdown-text-color: #0078d4;
-    --popup-background: rgba(255, 255, 255, 0.95);
-    --popup-content-color: #000000;
-
-    --color-primary: #274ba9;
-    --color-primary-light: #587fe5;
-    --color-primary-lighter: #789af5;
-    --color-contact: #cdc4c4;
-    --color-secondary: #c18bbc;
-}
-
-.dark-theme {
-    --border-radius: 8px;
-    --background-color: #121212;
-    --text-color: #e0e0e0;
-    --titlebar-background: linear-gradient(45deg, #333, #555);
-    --title-color: #ffffff;
-
-    --button-background: #1e88e5;
-    --button-text-color: #ffffff;
-    --button-hover-background: #1565c0;
-    --button-hover-text-color: #d4d4d4;
-
-    --input-background: #333;
-    --input-border: #1e88e5;
-
-    --dropdown-background: #2c2c2c;
-    --dropdown-text-color: #1e88e5;
-    --popup-background: rgba(18, 18, 18, 0.95);
-    --popup-content-color: #ffffff;
-
-    --color-primary: #82aaff;
-    --color-primary-light: #b3d1ff;
-    --color-primary-lighter: #d0e2ff;
-    --color-contact: #444;
-    --color-secondary: #ba68c8;
 }
 
 * {
@@ -86,24 +42,32 @@ body {
 
 body a {
     text-decoration: none;
+    color: #fff;
 }
 
-h1.responsive {
-    font-size: clamp(2rem, 2.2vw + 0.85rem, 3.8rem);
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #484848;
+    font-family: 'futura_ltbold', sans-serif;
 }
-@media (max-width: 100vh) { 
-    h1.responsive {
-        font-size: clamp(10px, 1vh + 0.8rem, 40px);
-    }
-}
+/* h1{font-size: 70px; margin:0; line-height: 72px;} */
+h2 {font-size: 30px; margin: 0 0 20px;}
+h3 {font-size: 20px; margin: 0 0 10px;}
+img {width: 100%;}
+a,button{outline: 0 !important;}
+a:hover,a:focus{ text-decoration: none}
+
+
+/* h1.responsive {
+    font-size: clamp(1.8rem, 2.2vw, 2.8rem);
+} */
 h2.responsive {
-    font-size: clamp(1.75rem, 2vw + 0.75rem, 3.5rem); 
+    font-size: clamp(1.75rem, 1.9vw + 0.375rem, 3.5rem); 
 }
-
 h3.responsive {
     font-size: clamp(1.5rem, 1.8vw + 0.5rem, 3rem); 
 }
-
 h4.responsive {
     font-size: clamp(1.25rem, 1.5vw + 0.25rem, 2.5rem); 
 }
@@ -121,15 +85,17 @@ a.responsive {
 header {
     position: relative;
     width: 100%;
-    height: auto;
-    padding: var(--padding-titlebar);
+    height: 100px;
+    color: var(--title-color);
+    background: var(--color-primary);    
 }
 
 .top_nav {
-    height: 40px;
+    padding: var(--padding-content);
+    height: 50px;
     width: 100%;    
-    transition: transform 0.3s ease; /* Smooth transition */
-    z-index: 1001; /* Ensure it's above the navbar */
+    background: var(--color-primary);
+    transition: transform 0.3s ease;
 }
 
 .top_nav ul {
@@ -137,10 +103,13 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
 }
 
-.top_nav ul li a {
-    color: var(--color-contact);
+.top_nav ul li a span {
+    color: var(--title-color);
+    margin-right: 6px;
 }
 
 .top_nav.hidden {
@@ -158,13 +127,22 @@ header {
     top: 0;
     right: 0;
     z-index: 1000;    
-    background: var(--titlebar-background);
-    color: var(--title-color);
-    box-shadow: 0 4px 15px var(--button-hover-background); 
+    
+    box-shadow: 0 13px 15px var(--button-hover-background); 
     backdrop-filter: blur(10px);
-    transform: translateY(40px); 
+    background: var(--titlebar-background);
+
+    transform: translateY(50px); 
     transition: transform 0.3s ease, box-shadow 0.3s, background 0.3s;
-    padding: var(--padding-titlebar);
+    padding: var(--padding-card);
+}
+
+.nav a {
+    color: #fff;
+    font-weight: 700;
+}
+.nav a:hover, .nav a:focus {
+    color: var(--color-secondary);
 }
 
 #navBar.show {
@@ -172,20 +150,17 @@ header {
 }
 
 #navBar:hover {
-    box-shadow: 0 4px 15px rgba(103, 139, 5, 0.901);
-    background: rgba(255, 255, 255, 0.9); 
+    box-shadow: 0 12px 15px var(--color-secondary);
 }
 
 .logo {
     height: 100%;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-decoration: none;
 }
 
 .logo h1 {
     color: var(--color-primary);
+    font-size: clamp(1.8rem, 2vw, 2.4rem)
 }
 
 .logo h1 strong {
@@ -194,6 +169,7 @@ header {
 
 .logo img {
     height: 100%;
+    width: auto;
     margin-right: 12px; 
 }
 
@@ -223,7 +199,7 @@ header {
 }
 
 .social a:hover {
-    color: rgba(103, 139, 5, 0.8); 
+    color: var(--color-secondary); 
 }
 
 #myMenu {
@@ -241,17 +217,6 @@ header {
     }
     .nav {
         display: none; 
-    }
-
-    #navBar.active .nav {
-        display: flex; 
-        flex-direction: column; 
-        position: absolute; 
-        top: 60px; 
-        left: 0;
-        background: var(--titlebar-background);
-        width: 100%; 
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
     }
 }
 
@@ -291,7 +256,7 @@ header {
     }
     
     .why-choose-us {
-        padding: 20px 0;
+        padding: var(--padding-content);
     }
 }
 
@@ -309,7 +274,7 @@ header {
     z-index: 1;
     margin-top: 0px;
     top: 0px;
-    z-index: 90;
+    z-index: 20000;
 }
 #loading-center{
     width: 100%;
@@ -548,25 +513,38 @@ a .fa {
 /************************** Why Choose Us ********************************/
 
 .why-choose-us {
-    background-color: #f9f9f9;
-    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
 }
 
-.head_title {
-    color: #1c1c1c;
-    font-family: 'Roboto', sans-serif;
+.why-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('../images/why_us/why_us.jpg') no-repeat center/cover;
+    animation: hoverPulse 10s infinite;
+    opacity: 0.3;
+    z-index: -1;
+    filter: blur(5px);
 }
 
-.head_title h2 {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #1c60b2;
-    margin-bottom: 10px;
+@keyframes hoverPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Slightly larger */
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
-.head_title p {
-    color: #666;
-    margin-bottom: 40px;
+.nav li a:hover, .social li a:hover {
+    animation: hoverPulse 0.6s ease-in-out infinite;
 }
 
 .card {
@@ -579,72 +557,190 @@ a .fa {
     overflow: hidden;
     transition: transform 0.5s;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
 }
 
 .card:hover .cover {
     transform: rotateY(180deg);
 }
 
-.cover {
+.cover, .card-back {
     position: absolute;
     height: 100%;
     width: 100%;
     backface-visibility: hidden;
     border-radius: 8px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: flex-end;
-    padding: 20px;
-    color: #fff;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-    transition: transform 0.7s ease;
-}
-
-.cover h1 {
-    font-size: 1.6em;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0;
-}
-
-.cover.item-a { background-image: url('../images/why_us/why_us.jpg'); }
-.cover.item-b { background-image: url('../images/why_us/why_us.jpg'); }
-.cover.item-c { background-image: url('../images/why_us/why_us.jpg'); }
-.cover.item-d { background-image: url('../images/why_us/why_us.jpg'); }
-
-.card-back {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    backface-visibility: hidden;
-    background-color: #1c60b2;
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
     padding: 20px;
+    color: #fff;
+    background: var(--color-primary);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    transition: transform 0.7s ease;
+    font-size: 1.1em;
     text-align: center;
-    font-size: 1em;
-    transform: rotateY(180deg);
-    transition: transform 0.5s ease;
 }
 
-.card-back a {
-    color: #fff;
-    font-weight: 300;
-    text-decoration: none;
-    display: block;
-    padding: 15px;
-    font-size: 1em;
+.cover {
+    background-image: url('../images/why_us/why_us.jpg');
+    background-size: 200%;
 }
+
+.cover.item-a { background-position: top left; }
+.cover.item-b { background-position: top right; }
+.cover.item-c { background-position: bottom left; }
+.cover.item-d { background-position: bottom right; }
+
+.card-back {
+    transform: rotateY(180deg);
+    background-color: #1c60b2;
+}
+
+.card[data-part="1-1"] .card-back { background-position: top left; }
+.card[data-part="1-2"] .card-back { background-position: top right; }
+.card[data-part="2-1"] .card-back { background-position: bottom left; }
+.card[data-part="2-2"] .card-back { background-position: bottom right; }
 
 .card-back i {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-right: 8px;
     color: #fff;
 }
 
 /************************** /Why Choose Us ********************************/
+
+
+
+
+/************************** Portfolio ********************************/
+
+#portfolio {
+    background: url("../images/portfolio_bg.jpg") repeat;
+    background-size: contain;
+    position: relative;
+    padding-bottom: 100px;
+    /*border-bottom: 2px solid var(--color-primary);*/
+}
+#portfolio::before{
+    position:absolute;
+    content:"";
+    height:100%;
+    width:100%;
+    /*background: rgba(39,75,169,0.85);*/
+    background: rgba(0,0,0,0.8);
+    top:0;
+    left:0;
+}
+.portfolio_area{ position:relative;color:#fff;}
+.portfolio_area h2 {
+    color: #fff;
+    margin: 65px 0 34px;
+}
+
+.btn.know_btn {
+    background: var(--secondary-color) none repeat scroll 0 0;
+    border-radius: 30px;
+    color: #fff;
+    font-family: "futura_ltbold",sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border:1px solid transparent;
+    margin-bottom: 40px;
+}
+
+.btn.know_btn {
+    margin-top: 64px;
+}
+.btn.know_btn:last-child {
+    margin-left: 20px;
+}
+.btn.know_btn:hover,
+.btn.know_btn:focus {
+    background: transparent;
+    color:var(--color-primary);
+    border:1px solid var(--color-primary);
+}
+
+.grid{margin: 0 -6px;}
+.grid-item{border:6px solid transparent;}
+.grid-item, .grid-sizer {width: 25%;}
+.grid-item {
+    float: left;
+    height: 255px !important; 
+}
+.grid-item{
+    overflow: hidden;
+}
+.grid-item--width2 { width: 50%;}
+.grid-item--height2 { height: 510px !important;}
+.grid-item:hover img{
+    transform: scale(1.1);
+}
+.grid-item img{
+    height: 100%;
+    border-radius: 10px;
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    -ms-transition: all 0.6s;
+    transition: all 0.6s;
+}
+/************************** /Portfolio ********************************/
+
+
+
+
+/********************** About ***************************/
+.about_content {
+    margin-right: 25px;
+}
+.about_content > h2 {
+    font-size: 40px;
+    text-align: center;
+    margin: 90px 0 60px 0;
+    color:var(--color-primary);
+}
+.about_content > h3 {
+    font-size: 30px;
+    margin: 2px 0 30px;
+    text-transform: inherit;
+}
+.about_content > p {
+    line-height: 18px;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+.about_content .btn.know_btn {
+    margin: 18px 0 60px;
+}
+
+
+/*********************** /About *************************/
+
+
+
+
+
+/***************************** Services ********************************/
+#services {
+    margin-bottom: 40px;
+}
+#services h2 {
+    margin: 85px 0 50px;
+    text-align:center;
+}
+.service_item {
+    margin-bottom: 60px;
+}
+.service_item > h3 {
+    margin: 25px 0 15px;
+    text-align: center;
+}
+.service_item img {
+    border-radius: 10px;
+    width: 120px;
+}
+
+/***************************** /Services ********************************/

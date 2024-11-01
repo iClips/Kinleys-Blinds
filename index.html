@@ -26,7 +26,7 @@
 
     gtag('config', 'G-0ER5PGJ9PY');
 </script>
-<body class="light-theme">
+<body>
     <!-- Preloader -->
     <div id="loading">
         <div id="loading-center">
@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-12 col-md-5">
                         <div class="title-container fade-in">
-                            <h1 class="title">Transform Your Windows with Stunning Blinds</h1>
+                            <h1 class="title" id="title_hero">Transform Your Windows with Stunning Blinds</h1>
                             <div class="row">
                                 <div class="col-12 d-md-none">
                                     <div class="container">
@@ -110,11 +110,9 @@
                                 </div>
                             </div>
                             <h2 class="subtitle">Experience unparalleled elegance and functionality with our custom blinds, tailored to fit any window and style.</h2>
-                            <!--<button type="button" class="btn btn-primary btn-lg">Lets build a quote</button>-->
                             <div class="cta">
                                 <a href="/get-quote" class="btn btn-primary">Get a Free Quote</a>
                             </div>
-
                         </div>
                     </div>
                     <div class="col-12 col-md-7 d-flex align-items-center justify-content-center">
@@ -149,7 +147,7 @@
     </section>
 
     <!-- About -->
-    <section id="about" hidden>
+    <section id="about" id="about">
         <div class="container">
             <div class="row row-eq-height">
                 <div class="col-12 about_content">
@@ -173,61 +171,58 @@
         </div>
     </section><!-- About end -->
 
-    <section class="why-choose-us">
-        <div class="why-content">
-            <div class="container">
-                <div class="head_title text-center">
-                    <h2>Why Choose Kinleys</h2>
-                    <p>Experience unmatched dedication, quality, and professionalism with every installation.</p>
+    <section class="why-choose-us" id="why_us">
+        <div class="container">                
+            <div class="row">
+                <div class="col-6 d-flex align-items-center justify-content-center">
+                    <div class="card" data-part="1-1">
+                        <div class="cover item-a">
+                            <h2 class="responsive">WE DELIVER<br>QUALITY</h2>
+                            <div class="card-back">
+                                <a href="#"><i class="fas fa-award"></i> Premium materials & craftsmanship for durable, stylish products.</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="card">
-                            <div class="cover item-a">
-                                <h2 class="responsive">WE DELIVER<br>QUALITY</h2>
-                                <div class="card-back">
-                                    <a href="#"><i class="fas fa-award"></i> Premium materials & craftsmanship for durable, stylish products.</a>
-                                </div>
+                <div class="col-6 d-flex align-items-center justify-content-center">
+                    <div class="card" data-part="1-2">
+                        <div class="cover item-b">
+                            <h2 class="responsive">ALWAYS<br>ON TIME</h2>
+                            <div class="card-back">
+                                <a href="#"><i class="fas fa-clock"></i> Committed to punctuality for smooth, stress-free projects.</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="card">
-                            <div class="cover item-b">
-                                <h2 class="responsive">ALWAYS<br>ON TIME</h2>
-                                <div class="card-back">
-                                    <a href="#"><i class="fas fa-clock"></i> Committed to punctuality for smooth, stress-free projects.</a>
-                                </div>
+                </div>
+                <div class="col-6 d-flex align-items-center justify-content-center">
+                    <div class="card" data-part="2-1">
+                        <div class="cover item-c">
+                            <h2 class="responsive">PASSION<br>DRIVEN</h2>
+                            <div class="card-back">
+                                <a href="#"><i class="fas fa-heart"></i> Our passion reflects in every blind we create, just for you.</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="card">
-                            <div class="cover item-c">
-                                <h2 class="responsive">PASSION<br>DRIVEN</h2>
-                                <div class="card-back">
-                                    <a href="#"><i class="fas fa-heart"></i> Our passion reflects in every blind we create, just for you.</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 d-flex align-items-center justify-content-center">
-                        <div class="card">
-                            <div class="cover item-d">
-                                <h2 class="responsive">PROFESSIONAL<br>SERVICE</h2>
-                                <div class="card-back">
-                                    <a href="#"><i class="fas fa-briefcase"></i> Expert guidance & seamless service for every installation.</a>
-                                </div>
+                </div>
+                <div class="col-6 d-flex align-items-center justify-content-center">
+                    <div class="card" data-part="2-2">
+                        <div class="cover item-d">
+                            <h2 class="responsive">PROFESSIONAL<br>SERVICE</h2>
+                            <div class="card-back">
+                                <a href="#"><i class="fas fa-briefcase"></i> Expert guidance & seamless service for every installation.</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- <div class="why-content">
+        </div> -->
     </section>
     
+    
     <!-- Services -->
-    <section id="services" hidden>
+    <section id="services">
         <div class="container">
             <h2>OUR SERVICES INCLUDES</h2>
             <h4 style="text-align: center; margin-bottom: 80px;">- Free assessments and quotations <a style="cursor: pointer; font-weight: bold; text-decoration: none;" data-toggle="modal" data-target="#terms_modal">(T&Cs apply)</a><br/>
@@ -236,21 +231,21 @@
 - Blinds repairs <br/>
 - Blinds alterations</h4>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-12 col-md-4">
                     <div class="service_item">
                         <img src="images/service/service2.jpg" alt="Our Services" />
                         <h3>Style Selection</h3>
                         <p> We offer a diverse range of blinds tailored to match any interior aesthetic. From classic designs to contemporary styles, our collection ensures that you'll find the perfect window covering to complement your décor.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-12 col-md-4">
                     <div class="service_item">
                         <img src="images/service/service1.jpg" alt="Our Services" />
                         <h3>Quality Craftsmanship</h3>
                         <p>Our blinds are crafted with precision and attention to detail, using high-quality materials to ensure durability and longevity. Each blind undergoes rigorous testing to meet our strict quality standards, guaranteeing customer satisfaction and peace of mind.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-12 col-md-4">
                     <div class="service_item">
                         <img src="images/service/service3.jpg" alt="Our Services" />
                         <h3>Customization Options</h3>
@@ -295,8 +290,8 @@
     </div>
     
     <!-- Portfolio -->
-    <section id="portfolio" hidden>
-        <div class="container portfolio_area text-center">
+    <section id="portfolio">
+        <div class="container portfolio_area">
             <h2>Made with love</h2>
             <p>We're passionate about creating exceptional window covering solutions that elevate your space with style and functionality. From timeless classics to modern innovations, our blinds are meticulously crafted to enhance your home or workplace. With a commitment to quality and attention to detail, we ensure that every installation reflects our dedication to excellence.</p>
             <a href="portfolio/" class="btn know_btn">Know more</a>
