@@ -1,34 +1,33 @@
-window.onload = function() {
+var heroAnimationInterval = null;
+
+let isMenuOpen = false;
+let sideMenu, myMenu, myMenuItems;
+
+document.addEventListener('DOMContentLoaded', function () {
     var loadingElement = document.getElementById("loading");
     loadingElement.style.transition = "opacity 0.5s"; 
     loadingElement.style.opacity = "0"; 
+    loadingElement.style.display = 'none';
 
-    setTimeout(function() {
-        loadingElement.style.display = "none";
-    }, 500); 
-};
-
-var heroAnimationInterval = null;
-
-document.addEventListener('DOMContentLoaded', function () {
-    const sections = document.querySelectorAll('.gallery-section');
+    const sectionTitle = document.querySelectorAll('.section-title');
     const heroSection = document.querySelector('.hero');
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                observer.unobserve(entry.target);
+                entry.target.classList.add('anim-title');
+            } else {
+                entry.target.classList.remove('anim-title');
             }
         });
     }, {
         threshold: 0.1
     });
 
-    sections.forEach(section => {
+    sectionTitle.forEach(section => {
         observer.observe(section);
     });
-    
+
     const observerHero = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !heroAnimationInterval) {
@@ -45,35 +44,26 @@ document.addEventListener('DOMContentLoaded', function () {
     
     animateHero();
     initIntoViewAnim();
-    
-    
-    let isMenuOpen = false;
-    document.getElementById("myMenu").addEventListener("click", function() {
-        if (!isMenuOpen) {
-            document.getElementById("side-menu").style.width = "250px";
-            isMenuOpen = true;
-        } else {
-            document.getElementById("side-menu").style.width = "0";
-            isMenuOpen = false
-        }
-    });
-    
-    document.getElementById("loading").classList.add('loader-hidden');
-
-    // Wait for the animation to finish before hiding
-    document.getElementById("loading").addEventListener('animationend', function() {
-        document.getElementById("loading").classList.add('finished'); // Add finished class to hide
-    }, { once: true });
 });
 
+function toggleMenu() {
+    if (!isMenuOpen) {
+        document.querySelector(".side-menu").style.width = "250px";
+        isMenuOpen = true;
+    } else {
+        document.querySelector(".side-menu").style.width = "0";
+        isMenuOpen = false
+    }
+}
 
 function animateHero() {
-    let selector = window.innerWidth < 768 ? '.gallery-image-hero-sm' : '.gallery-image-hero';
+    // let selector = window.innerWidth < 768 ? '.gallery-image-hero-sm' : '.gallery-image-hero';
+    let selector = '.gallery-image-hero';
     let count = 0;
     let index = 0;
     let imgIndex = 0;
 
-    const images = document.querySelectorAll(selector); // Adjust the selector to target your images
+    const images = document.querySelectorAll(selector); 
 
     const newImageSources = [
         'assets/images/gallery/kitchen',
@@ -115,44 +105,63 @@ function initIntoViewAnim() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("in-view");
+                entry.target.classList.add("fadeInUp");
             } else {
-                entry.target.classList.remove("in-view");
+                entry.target.classList.remove("fadeInUp");
             }
         });
     });
 
-    document.querySelectorAll(".fade-in").forEach((content) => {
+    document.querySelectorAll(".section-title").forEach((content) => {
         observer.observe(content);
     });
 }
 
-function toggleMenu() {
-    const navBar = document.getElementById('navBar');
-    navBar.classList.toggle('active');
-}
 
 let lastScrollTop = 0;
 const topNav = document.querySelector('.top_nav');
-const navBar = document.getElementById('navBar');
+const navBar = document.getElementById("navBar");
 
 window.addEventListener('scroll', function() {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (currentScroll > lastScrollTop) {
-        // Scrolling down
-        topNav.classList.add('hidden'); // Hide top_nav
-        navBar.classList.add('show'); // Show navbar
-    } else {
-        // Scrolling up
-        if (currentScroll <= 0) {
-            // When at the top
-            topNav.classList.remove('hidden');
-            navBar.classList.remove('show');
+    if (window.innerWidth >= 768) {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+        if (currentScroll > lastScrollTop) {
+            topNav.classList.add('hidden'); 
+            navBar.classList.add('show'); 
         } else {
-            navBar.classList.add('show'); // Keep navbar visible
+            if (currentScroll <= 0) {
+                topNav.classList.remove('hidden');
+                navBar.classList.remove('show');
+            } else {
+                navBar.classList.add('show'); // Keep navbar visible
+            }
         }
+    
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
     }
-
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
 });
+
+function openModal() {
+    const overlay = document.getElementById('modalk-overlay');
+    const modal = overlay.querySelector('.modalk');
+
+    overlay.style.display = 'flex';
+
+    setTimeout(() => {
+        overlay.classList.add('show');
+        modal.classList.add('show');
+    }, 10);
+}
+
+function closeModal() {
+    const overlay = document.getElementById('modalk-overlay');
+    const modal = overlay.querySelector('.modalk');
+
+    modal.classList.remove('show');
+    overlay.classList.remove('show');
+
+    setTimeout(() => {
+        overlay.style.display = 'none';
+    }, 400);
+}

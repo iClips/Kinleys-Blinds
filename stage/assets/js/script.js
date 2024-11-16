@@ -1,6 +1,7 @@
 var heroAnimationInterval = null;
 
 document.addEventListener('DOMContentLoaded', function () {
+    
     const sections = document.querySelectorAll('.gallery-section');
     const heroSection = document.querySelector('.hero');
 

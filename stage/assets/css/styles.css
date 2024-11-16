@@ -272,9 +272,10 @@ header:hover {
 
 
 .flex-row-center {
-    display: flex;
+	display: flex;
     flex-direction: row;
     align-items: center;
+	justify-content: center;
 }
 
 .hero {
@@ -513,10 +514,8 @@ a .fa {
 
 .cover::before {
     content: '';
-    position: absolute;
-    
-    border-radius: var(--border-radius);
-    
+    position: absolute;    
+    border-radius: var(--border-radius);    
     top: 20px;
     left: 20px;
     right: 20px;
