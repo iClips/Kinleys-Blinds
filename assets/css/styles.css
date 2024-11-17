@@ -200,10 +200,13 @@ header {
 }
 
 .top_nav ul {
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
+    gap: 23%;
 }
 
 .top_nav ul li a span {
@@ -240,6 +243,9 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s, background 0.3s;
     padding: var(--padding-card);
 }
+#navBar:hover {
+    box-shadow: var(--color-hover);
+}
 
 .nav-content {
     width: 100%;
@@ -274,8 +280,8 @@ header {
     color: #fff;
     font-weight: 700;
 }
-.nav li {
-    text-align: center;
+.nav li a {
+    text-decoration: none;
 }
 .nav a:hover, .nav a:focus {
     color: var(--color-hover);
@@ -976,7 +982,7 @@ a .fa {
 /************************** Portfolio ********************************/
 
 #portfolio {
-    background: url("../images/portfolio_bg.jpg") no-repeat center;
+    background: url("../images/portfolio1.jpg") no-repeat center;
     background-size: cover;
     background-attachment: fixed;    
     position: relative;
@@ -1033,202 +1039,97 @@ a .fa {
 
 
 /********************** About ***************************/
-.glamorous-bg {
-    padding: 20px;
-    margin: 10px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-    background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
-    color: white;
+
+.icon-showcase {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 3rem;
+    color: #f0d24d;
+    margin: 20px 0;
 }
+
+.icon-showcase i:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+/******** Glamorous Background ********/
+.glamorous-bg, .about-bg {
+    margin: 30px 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.glamorous-bg {
+    background-image: url('../images/about/elevateSpace.jpg');
+    animation: liquidBackground 3s infinite ease-in-out;
+}
+
+.about-bg {
+    background-image: url('../images/about/stylishShowRoom.jpg');
+}
+
 .glamorous-bg:hover, .about-bg:hover {
     transform: scale(1.05);
+    transition: transform 0.3s ease;
 }
-.about-bg {
+
+/******** About Box ********/
+.about-box {
+    background: rgba(0, 0, 0, 0.7);
     padding: 20px;
-    margin: 10px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);    
-    color: white;
-}
-
-.subheading {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-.special-offer {
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: var(--border-radius);
-    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
 }
 
 .about-box .section-subtitle {
-    color: var(--color-active);
+    color: #f0d24d;
+    font-size: 28px;    
+    font-weight: 600;
+}
+
+.special-offer {
+    margin: 0 0 10px;
     font-size: 28px;
+    font-weight: 500;
+    background: var(--color-linear-gradient-opa);
+    padding: var(--padding-card);
+    border-radius: var(--border-radius);
 }
 
 .special-offer h4 {
     margin: 0 0 10px;
     font-size: 24px;
 }
-
-
-.bounce {
-    animation: bounce 0.5s ease forwards;
+.special-offer ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
 }
 
-.scale-up {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+.special-offer li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.fade-in {
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
-
-.glow {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    transition: box-shadow 0.5s ease;
-}
-
-.rotate {
-    animation: rotate 0.8s ease forwards;
-}
-
-
+/******** Icon Animations ********/
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 768px) {
-    .about-box {
-        margin-bottom: 20px;
-    }
-}
-
-.about-bg {
-    background-image: url(../images/about/stylishShowRoom.jpg);
-}
-
-.glamorous-bg {
-    background-image: url(../images/about/elevateSpace.jpg); 
-}
-
-.row.align-items-center > div {
-    margin-bottom: 30px; 
-}
-
-#about {
-    background: var(--color-active);
-}
-.about-bg, .glamorous-bg {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: var(--border-radius);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3); 
-    position: relative;
-    color: #ffffff;
-    height: 100%;
-    padding: 60px 24px;
-}
-
-.about-content p {
-    font-size: 16px;
-}
-
-.about-bg::after, .glamorous-bg::after {
-    content: "";
-    position: absolute;
-    top: 0; 
-    left: 0;
-    border-radius: var(--border-radius);
-    z-index: 1;
-}
-
-.about-bg:hover::after, .glamorous-bg:hover::after {
-    background: rgba(0, 0, 0, 0.9); 
-    /* background-color: var(--color-hover); */
-    transform: translateY(-5px);
-}
-
-
-.subheading {
-    font-size: 1.7rem;
-    font-weight: 700;
-    color: #f0d24d;
-}
-
-.about-box {
-    height: 100%;
-    width: 100%;
-    border-radius: var(--border-radius);
-    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.5));
-    padding: var(--padding-card);
-}
-.about-box p {
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--color-accent);
-}
-
-
-.special-offer h4 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #f0d24d;
-    margin-bottom: 10px;
-}
-
-.special-offer ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.special-offer li {
-    font-size: 18px;
-    margin: 8px 0;
-}
-
-.special-offer li i {
-    color: #f0d24d;
-    margin-right: 8px;
-    font-size: 18px;
+.fa:hover {
+    animation: bounce 0.5s ease-in-out;
+    color: #ffd700;
 }
 
 /*********************** /About *************************/
