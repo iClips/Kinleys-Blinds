@@ -165,3 +165,23 @@ function closeModal() {
         overlay.style.display = 'none';
     }, 400);
 }
+
+$(document).ready(function () {
+    $('[data-fancybox="gallery"]').fancybox({
+        buttons: [
+            'zoom',         
+            'slideShow',   
+            'fullScreen',    
+            'thumbs',       
+            'close'  
+        ],
+        animationEffect: "zoom", 
+        transitionEffect: "fade",
+        loop: true,              
+        keyboard: true,          
+        protect: true,           
+        arrows: true,            
+        infobar: true,        
+        zoom: true   
+    });
+});
