@@ -28,7 +28,8 @@
     --col-btn-hover-bg: #005a9edd;
     --col-btn-hover-text: #f1f1f1;
 
-    --border-radius: 12px;
+    --border-radius: 8px;
+    font-size: 16px;
 }
 
 * {
@@ -69,17 +70,6 @@ body a {
     text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    text-transform: uppercase;
-    /* color: #484848; */
-    font-family: 'futura_ltbold', sans-serif;
-}
-
-h2 {font-size: 30px; margin: 0 0 20px;}
-h3 {font-size: 20px; margin: 0 0 10px;}
-img {width: 100%;}
-a,button{outline: 0 !important;}
 a:hover,a:focus{ text-decoration: none}
 
 .flex-row-center {
@@ -117,19 +107,89 @@ a:hover,a:focus{ text-decoration: none}
     background-color: var(--color-active);
 }
 
+p.responsive {
+    font-size: 1rem; 
+    line-height: 1.6; 
+    margin: 1rem 0; 
+}
+  
+a.responsive {
+    font-size: 1rem; 
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s; 
+}
+  
+a.responsive:hover,
+a.responsive:focus {
+    text-decoration: underline;
+}
+  
+@media screen and (max-width: 768px) {
+    p.responsive {
+      font-size: 0.9rem;
+    }
+  
+    a.responsive {
+      font-size: 0.9rem;
+    }
+}
+  
+@media screen and (min-width: 1200px) {
+    p.responsive {
+      font-size: 1.1rem; 
+    }
+  
+    a.responsive {
+      font-size: 1.1rem; 
+    }
+}
+  
 .anim-title {
     animation: fadeInUp 0.6s ease-in-out;
 }
-
+  
+.titlebar-title {
+    font-size: 1.5rem; 
+    font-weight: bold;
+    text-align: center; 
+    margin: 0.5rem 1rem; 
+    line-height: 1.2; 
+    color: #333; 
+    white-space: nowrap; 
+}
+  
+  
 .section-title {
-    font-size: clamp(20px, 2.3vw, 40px);
-    font-weight: 700;
+    font-size: 1.3rem; 
+    font-weight: semi-bold;
+    text-align: center; 
+    margin: 1rem 0; 
+    line-height: 1.4; 
     color: var(--color-primary);
-    margin: 5% auto;
-    text-align: center;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
+@media screen and (max-width: 768px) {
+    .titlebar-title {
+        font-size: 1.25rem; 
+    }
+
+    .section-title {
+        font-size: 1.1rem; 
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .titlebar-title {
+        font-size: 2rem; 
+    }
+
+    .section-title {
+        font-size: 1.8rem; 
+    }
+}
+  
 .section-title span {
     color: var(--color-secondary);
 }
@@ -181,15 +241,37 @@ h4.responsive {
 }
 
 
-p.responsive, a.responsive {
+/* p.responsive, a.responsive {
     font-size: clamp(18px, 1.3vw, 26px);
-}
+} */
 
 
 .mb-20 {
     margin-bottom: 80px!important;
     padding: 0 44px!important;
 }
+
+.card-shadow, .photo {
+    display: inline-block; 
+    background-color: #fff; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+                0 1px 3px rgba(0, 0, 0, 0.06); 
+    transition: transform 0.2s, box-shadow 0.2s; 
+}
+  
+.card-shadow:hover, .photo:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 
+                0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+  
+.card-shadow:active, .photo:active {
+    transform: translateY(0); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+  
 /********************* Header **************************************/
 
 header {
@@ -278,12 +360,11 @@ header {
     gap: 12px;
 }
 
-.logo h1 {
+.logo .titlebar-title {
     color: var(--color-secondary);
-    font-size: clamp(14px, 2vw, 28px)
 }
 
-.logo h1 strong {
+.logo .titlebar-title strong {
     color: var(--color-primary);
 }
 
@@ -654,7 +735,7 @@ a .fa {
     animation: moveLeft 1s forwards;
 }
 
-/* Add keyframes for image transitions */
+
 @keyframes moveRight {
     0% {
         transform: translateX(-100%);
@@ -737,7 +818,7 @@ a .fa {
     left: 0;
     height: 100%;
     width: 100%;
-    background: #6f716b; 
+    background: #83b5fffc; 
 }
 
 .why-title  {
@@ -974,58 +1055,156 @@ a .fa {
 /************************** Portfolio ********************************/
 
 #portfolio {
-    background: url("../images/portfolio1.jpg") no-repeat center;
-    background-size: cover;
-    background-attachment: fixed;    
-    position: relative;
-    padding: var(--padding-section);
+    padding: 50px 20px; 
+    background-color: #f9f9f9; 
 }
-#portfolio::before{
-    position:absolute;
-    content:"";
-    height:100%;
-    width:100%;
-    /* background: rgba(39,75,169,0.85); */
-    background: rgba(0,0,0,0.9);
-    top:0;
-    left:0;
+  
+.portfolio-area {
+    text-align: center;
 }
-.portfolio-area{ position:relative;color:#fff;}
-.portfolio-area h2 {
+  
+.portfolio-area .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+  
+.portfolio-area .section-title span {
+    color: #0066cc; 
+}
+  
+.portfolio-area .responsive {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+}
+  
+.portfolio-area .button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
     color: #fff;
-    margin: 65px 0 34px;
-}
-
-.know_btn {
-    text-transform: uppercase;
-    margin: 40px auto;
-}
-
-.portfolio-area .grid{margin: 50px auto;}
-.portfolio-area .grid-item{border:6px solid transparent;}
-.portfolio-area .grid-item, .grid-sizer {width: 25%;}
-.portfolio-area .grid-item {
-    float: left;
-    height: 255px !important; 
-}
-.portfolio-area .grid-item{
-    overflow: hidden;
-}
-.portfolio-area .grid-item--width2 { width: 50%;}
-.portfolio-area .grid-item--height2 { height: 510px !important;}
-.portfolio-area .grid-item:hover img{
-    transform: scale(1.1);
-}
-.portfolio-area .grid-item img{
-    height: 100%;
+    background-color: #0066cc;
+    border: none;
     border-radius: var(--border-radius);
-    -webkit-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    -o-transition: all 0.6s;
-    -ms-transition: all 0.6s;
-    transition: all 0.6s;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+  
+.portfolio-area .button:hover {
+    background-color: #003399;
+}
+  
+.portfolio-area .grid {
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+  
+.portfolio-area .grid-item {
+    position: relative;
+    width: calc(25% - 20px);
+    height: 255px;
+    border: 6px solid transparent;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  
+.portfolio-area .grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+  
+.portfolio-area .grid-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Ensures images are fully contained */
+    transition: transform 0.6s ease;
+}
+  
+.portfolio-area .grid-item:hover img {
+    transform: scale(1.1); /* Subtle zoom on hover */
+}
+  
+.portfolio-area .grid-item--width2 {
+    width: calc(50% - 20px); /* Adjust for gap */
+}
+  
+.portfolio-area .grid-item--height2 {
+    height: 510px;
+}
+  
+@media screen and (max-width: 992px) {
+    .portfolio-area .grid-item {
+      width: calc(33.33% - 20px); /* Three items per row */
+    }
+  
+    .portfolio-area .grid-item--width2 {
+      width: calc(66.66% - 20px); /* Two-thirds of the row */
+    }
+}
+  
+@media screen and (max-width: 768px) {
+    .portfolio-area .grid-item {
+      width: calc(50% - 20px); /* Two items per row */
+    }
+  
+    .portfolio-area .grid-item--width2 {
+      width: calc(100% - 20px); /* Full width */
+    }
+}
+  
+@media screen and (max-width: 480px) {
+    .portfolio-area .grid-item {
+      width: 100%; /* One item per row */
+    }
 }
 /************************** /Portfolio ********************************/
+/************** Slider ********************/
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+  
+.slides {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    animation: slide 5s infinite;
+}
+  
+.slides a {
+    width: 100%;
+    flex-shrink: 0;
+}
+  
+.slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+  
+@keyframes slide {
+    0%, 50% {
+      transform: translateX(0);
+    }
+    50.01%, 100% {
+      transform: translateX(-100%);
+    }
+}
+/************** /Slider ********************/
 
 
 
@@ -1140,6 +1319,7 @@ a .fa {
 }
 .service_item img {
    border-radius: var(--border-radius);
+   width: 90%;
 }
 .modalk-overlay {
     position: fixed;
