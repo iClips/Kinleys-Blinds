@@ -1128,43 +1128,37 @@ a .fa {
 
 .slides {
     display: flex;
-    flex-direction: row;
-    width: 200%; 
+    width: 200%; /* Two slides, so 200% */
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    transition: transform 0.5s ease;
     animation: slideTransition 10s infinite;
 }
 
 .slider a {
-    display: block; 
-    width: 100%; 
-    height: 100%; 
-    overflow: hidden; 
-    position: relative; 
+    display: block;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
 .slides .div-img {
-    width: 100%; 
-    height: 100%; 
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed;
-    transition: background-position 15.5s ease;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
     background-size: 120%;
-    transform: translateY(-5px);
-    transition: transform 0.5s ease, background-position 0.5s ease;
+    transition: background-position 0.5s ease, transform 0.5s ease;
     animation: imageMove 10s infinite alternate ease-in-out;
 }
 
 .slider a:hover .div-img {
-    /* transform: scale(1.2);  */
+    transform: scale(1.1); 
     /* Slight zoom effect for emphasis */
     /* background-position: top left;  */
     /* Starts animation from the top left corner */
 }
-
 @keyframes imageMove {
     0% {
         background-position: top left;
@@ -1183,6 +1177,7 @@ a .fa {
     }
 }
 
+/* Slide transition animation */
 @keyframes slideTransition {
     0%, 50% {
         transform: translateX(0);
@@ -1193,24 +1188,6 @@ a .fa {
 }
 
 /* Responsive Styles */
-/* @media screen and (max-width: 992px) {
-    .portfolio-area .grid-item {
-        width: calc(33.33% - 20px);
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .portfolio-area .grid-item {
-        width: calc(50% - 20px);
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .portfolio-area .grid-item {
-        width: 100%;
-    }
-} */
-
 /************** /Slider ********************/
 
 
