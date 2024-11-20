@@ -160,8 +160,8 @@ a.responsive:focus {
   
   
 .section-title {
-    font-size: 1.3rem; 
-    font-weight: semi-bold;
+    font-size: 2rem;
+    font-weight: bold;
     text-align: center; 
     margin: 1rem 0; 
     line-height: 1.4; 
@@ -808,7 +808,7 @@ a .fa {
 .why-choose-us {
     position: relative;
     overflow: hidden;
-    padding: var(--padding-section);
+    padding: 60px 24px;
 }
 
 .why-choose-us::before {
@@ -818,7 +818,7 @@ a .fa {
     left: 0;
     height: 100%;
     width: 100%;
-    background: #83b5fffc; 
+    background: #ffe9e9; 
 }
 
 .why-title  {
@@ -853,9 +853,10 @@ a .fa {
     margin-bottom: 60px;
 }
 
-.why-title ul li {
-    margin-bottom: 10px;
-    font-size: 18px;
+.why-title ul li, .why-title ul li .fa, .why-title ul li .glyphicon {
+    color: #555;    
+    margin-bottom: 15px;
+    font-size: 20px;
 }
 
 .why-title ul li i, .why-title ul li span {
@@ -876,7 +877,7 @@ a .fa {
     grid-template-rows: 300px 300px;
 }
 
-.grid-item {
+.choose-us-grid .grid-item {
     transition: transform 1s;
     position: relative;
 }
@@ -1063,17 +1064,6 @@ a .fa {
     text-align: center;
 }
   
-.portfolio-area .section-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-}
-  
-.portfolio-area .section-title span {
-    color: #0066cc; 
-}
-  
 .portfolio-area .responsive {
     font-size: 1rem;
     line-height: 1.6;
@@ -1108,8 +1098,9 @@ a .fa {
   
 .portfolio-area .grid-item {
     position: relative;
-    width: calc(25% - 20px);
+    width: 255px;
     height: 255px;
+    margin-bottom: 20px;
     border: 6px solid transparent;
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -1123,51 +1114,32 @@ a .fa {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
   
-.portfolio-area .grid-item img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover; /* Ensures images are fully contained */
-    transition: transform 0.6s ease;
+  
+.portfolio-area .grid-item:hover .div-img {
+    transform: scale(1.1);     
 }
   
-.portfolio-area .grid-item:hover img {
-    transform: scale(1.1); /* Subtle zoom on hover */
-}
-  
-.portfolio-area .grid-item--width2 {
-    width: calc(50% - 20px); /* Adjust for gap */
-}
-  
-.portfolio-area .grid-item--height2 {
-    height: 510px;
-}
+
   
 @media screen and (max-width: 992px) {
     .portfolio-area .grid-item {
-      width: calc(33.33% - 20px); /* Three items per row */
-    }
-  
-    .portfolio-area .grid-item--width2 {
-      width: calc(66.66% - 20px); /* Two-thirds of the row */
+      width: calc(33.33% - 20px); 
     }
 }
   
 @media screen and (max-width: 768px) {
     .portfolio-area .grid-item {
-      width: calc(50% - 20px); /* Two items per row */
-    }
-  
-    .portfolio-area .grid-item--width2 {
-      width: calc(100% - 20px); /* Full width */
+      width: calc(50% - 20px); 
     }
 }
   
 @media screen and (max-width: 480px) {
     .portfolio-area .grid-item {
-      width: 100%; /* One item per row */
+      width: 100%; 
     }
 }
 /************************** /Portfolio ********************************/
+
 /************** Slider ********************/
 .slider {
     position: relative;
@@ -1178,24 +1150,94 @@ a .fa {
   
 .slides {
     display: flex;
-    width: 200%;
+    width: 100%;
     height: 100%;
-    transition: transform 0.6s ease;
-    animation: slide 5s infinite;
+    position: relative;
+    transition: transform 3.6s ease;
+    animation: slide 20s infinite;
 }
   
 .slides a {
     width: 100%;
+    height: 100%;
     flex-shrink: 0;
 }
   
-.slides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.slides .div-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 200%;
+    width: 200%;
+    transition: transform 0.6s ease;
 }
-  
+
+.slides #div-img-1-1 {
+    background-image: url('../images/transition/project1_before.jpg');
+    animation: bgMove 25s infinite ease-in-out;
+    transition: background-position 15.5s ease;   
+}
+.slides #div-img-1-2 {
+    background-image: url('../images/transition/project1_after.jpg');    
+    animation: bgMove 25s infinite ease-in-out;
+    transition: background-position 15.5s ease;
+}
+
+.slides #div-img-2-1 {
+    background-image: url('../images/transition/project2_before.jpg');    
+    animation: bgMove 35s infinite ease-in-out;
+    transition: background-position 15.5s ease;
+}
+.slides #div-img-2-2 {
+    background-image: url('../images/transition/project2_after.jpg');    
+    animation: bgMove 35s infinite ease-in-out;
+    transition: background-position 13.5s ease;
+}
+
+.slides #div-img-3-1 {
+    background-image: url('../images/transition/project3_before.jpg');    
+    animation: bgMove 15s infinite ease-in-out;
+    transition: background-position 15.5s ease;
+}
+.slides #div-img-3-2 {
+    background-image: url('../images/transition/project3_after.jpg');    
+    animation: bgMove 11s infinite ease-in-out;
+    transition: background-position 11.5s ease;
+}
+
+.slides #div-img-4-1 {
+    background-image: url('../images/transition/project4_before.jpg');    
+    animation: bgMove 15s infinite ease-in-out;
+    transition: background-position 15.5s ease;
+}
+.slides #div-img-4-2 {
+    background-image: url('../images/transition/project4_after.jpg');    
+    animation: bgMove 9s infinite ease-in-out;
+    transition: background-position 9.5s ease;
+}
+
+.slides #div-img-5-1 {
+    background-image: url('../images/transition/project5_before.jpg');    
+    animation: bgMove 15s infinite ease-in-out;
+    transition: background-position 15.5s ease;
+}
+.slides #div-img-5-2 {
+    background-image: url('../images/transition/project5_after.jpg');    
+    animation: bgMove 7s infinite ease-in-out;
+    transition: background-position 7.5s ease;
+}
+
+.slides #div-img-6-1 {
+    background-image: url('../images/transition/project6_before.jpg');    
+    animation: bgMove 5s infinite ease-in-out;
+    transition: background-position 15.5s ease;
+}
+.slides #div-img-6-2 {
+    background-image: url('../images/transition/project6_after.jpg');    
+    animation: bgMove 5s infinite ease-in-out;
+    transition: background-position 5.5s ease;
+}
+
 @keyframes slide {
     0%, 50% {
       transform: translateX(0);
@@ -1225,7 +1267,6 @@ a .fa {
     transition: transform 0.3s ease;
 }
 
-/******** Glamorous Background ********/
 .glamorous-bg, .about-bg {
     margin: 5%;
     background-size: cover;
@@ -1250,7 +1291,6 @@ a .fa {
     transition: transform 0.3s ease;
 }
 
-/******** About Box ********/
 .about-box {
     background: rgba(0, 0, 0, 0.7);
     padding: 20px;
@@ -1302,6 +1342,9 @@ a .fa {
     color: #ffd700;
 }
 
+#about {
+    background-color: #f9f9f9;
+}
 /*********************** /About *************************/
 
 
@@ -1435,8 +1478,9 @@ a .fa {
     padding: 20px;
     margin-bottom: 30px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-   border-radius: var(--border-radius);
+    border-radius: var(--border-radius);
     transition: transform 0.3s ease;
+    height: 260px;
 }
 
 .testimonial_item:hover {
@@ -1449,7 +1493,7 @@ a .fa {
     color: #555;
 }
 
-.testimonial-img {
+.testimonial img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -1473,9 +1517,10 @@ a .fa {
 
 /***************************** Footer ******************************/
 footer {
-    background: url(../images/footer_bg.jpg)no-repeat;
+    background: url(../images/portfolio1.jpg)no-repeat;
     background-size:cover;
     background-attachment: fixed;
+    background-position: bottom;
     position:relative;
     padding-top:45px;
 }
@@ -1549,3 +1594,26 @@ footer::after {
 }
 
 /***************************** /Footer ******************************/
+
+@keyframes bgMove {
+    0% {
+        background-position: center;
+    }
+
+    25% {
+        background-position: 100% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    75% {
+        background-position: 0% 100%;
+    }
+
+    100% {
+        background-position: center;
+    }
+}
+
