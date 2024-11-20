@@ -1055,15 +1055,16 @@ a .fa {
 
 /************************** Portfolio ********************************/
 
+/************************** Portfolio ********************************/
 #portfolio {
-    padding: 50px 20px; 
-    background-color: #f9f9f9; 
+    padding: 50px 20px;
+    background-color: #f9f9f9;
 }
-  
+
 .portfolio-area {
     text-align: center;
 }
-  
+
 .portfolio-area .responsive {
     font-size: 1rem;
     line-height: 1.6;
@@ -1071,7 +1072,7 @@ a .fa {
     max-width: 700px;
     margin: 0 auto;
 }
-  
+
 .portfolio-area .button {
     display: inline-block;
     padding: 10px 20px;
@@ -1083,11 +1084,11 @@ a .fa {
     text-decoration: none;
     transition: background-color 0.3s ease;
 }
-  
+
 .portfolio-area .button:hover {
     background-color: #003399;
 }
-  
+
 .portfolio-area .grid {
     margin: 50px auto;
     display: flex;
@@ -1095,12 +1096,11 @@ a .fa {
     justify-content: center;
     gap: 20px;
 }
-  
+
 .portfolio-area .grid-item {
     position: relative;
     width: 255px;
     height: 255px;
-    margin-bottom: 20px;
     border: 6px solid transparent;
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -1108,144 +1108,109 @@ a .fa {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-  
+
 .portfolio-area .grid-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
-  
-  
+
 .portfolio-area .grid-item:hover .div-img {
-    transform: scale(1.1);     
+    /* transform: scale(1.1); */
 }
-  
 
-  
-@media screen and (max-width: 992px) {
-    .portfolio-area .grid-item {
-      width: calc(33.33% - 20px); 
-    }
-}
-  
-@media screen and (max-width: 768px) {
-    .portfolio-area .grid-item {
-      width: calc(50% - 20px); 
-    }
-}
-  
-@media screen and (max-width: 480px) {
-    .portfolio-area .grid-item {
-      width: 100%; 
-    }
-}
-/************************** /Portfolio ********************************/
-
-/************** Slider ********************/
+/************************** Slider ********************************/
 .slider {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
-  
+
 .slides {
     display: flex;
-    width: 100%;
+    flex-direction: row;
+    width: 200%; 
     height: 100%;
-    position: relative;
-    transition: transform 3.6s ease;
-    animation: slide 20s infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: slideTransition 10s infinite;
 }
-  
-.slides a {
-    width: 100%;
-    height: 100%;
-    flex-shrink: 0;
+
+.slider a {
+    display: block; 
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden; 
+    position: relative; 
 }
-  
+
 .slides .div-img {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 200%;
-    width: 200%;
-    transition: transform 0.6s ease;
-}
-
-.slides #div-img-1-1 {
-    background-image: url('../images/transition/project1_before.jpg');
-    animation: bgMove 25s infinite ease-in-out;
-    transition: background-position 15.5s ease;   
-}
-.slides #div-img-1-2 {
-    background-image: url('../images/transition/project1_after.jpg');    
-    animation: bgMove 25s infinite ease-in-out;
+    width: 100%; 
+    height: 100%; 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
     transition: background-position 15.5s ease;
+    background-size: 120%;
+    transform: translateY(-5px);
+    transition: transform 0.5s ease, background-position 0.5s ease;
+    animation: imageMove 10s infinite alternate ease-in-out;
 }
 
-.slides #div-img-2-1 {
-    background-image: url('../images/transition/project2_before.jpg');    
-    animation: bgMove 35s infinite ease-in-out;
-    transition: background-position 15.5s ease;
-}
-.slides #div-img-2-2 {
-    background-image: url('../images/transition/project2_after.jpg');    
-    animation: bgMove 35s infinite ease-in-out;
-    transition: background-position 13.5s ease;
+.slider a:hover .div-img {
+    /* transform: scale(1.2);  */
+    /* Slight zoom effect for emphasis */
+    /* background-position: top left;  */
+    /* Starts animation from the top left corner */
 }
 
-.slides #div-img-3-1 {
-    background-image: url('../images/transition/project3_before.jpg');    
-    animation: bgMove 15s infinite ease-in-out;
-    transition: background-position 15.5s ease;
-}
-.slides #div-img-3-2 {
-    background-image: url('../images/transition/project3_after.jpg');    
-    animation: bgMove 11s infinite ease-in-out;
-    transition: background-position 11.5s ease;
-}
-
-.slides #div-img-4-1 {
-    background-image: url('../images/transition/project4_before.jpg');    
-    animation: bgMove 15s infinite ease-in-out;
-    transition: background-position 15.5s ease;
-}
-.slides #div-img-4-2 {
-    background-image: url('../images/transition/project4_after.jpg');    
-    animation: bgMove 9s infinite ease-in-out;
-    transition: background-position 9.5s ease;
+@keyframes imageMove {
+    0% {
+        background-position: top left;
+    }
+    25% {
+        background-position: top right;
+    }
+    50% {
+        background-position: bottom right;
+    }
+    75% {
+        background-position: bottom left;
+    }
+    100% {
+        background-position: top left;
+    }
 }
 
-.slides #div-img-5-1 {
-    background-image: url('../images/transition/project5_before.jpg');    
-    animation: bgMove 15s infinite ease-in-out;
-    transition: background-position 15.5s ease;
-}
-.slides #div-img-5-2 {
-    background-image: url('../images/transition/project5_after.jpg');    
-    animation: bgMove 7s infinite ease-in-out;
-    transition: background-position 7.5s ease;
-}
-
-.slides #div-img-6-1 {
-    background-image: url('../images/transition/project6_before.jpg');    
-    animation: bgMove 5s infinite ease-in-out;
-    transition: background-position 15.5s ease;
-}
-.slides #div-img-6-2 {
-    background-image: url('../images/transition/project6_after.jpg');    
-    animation: bgMove 5s infinite ease-in-out;
-    transition: background-position 5.5s ease;
-}
-
-@keyframes slide {
+@keyframes slideTransition {
     0%, 50% {
-      transform: translateX(0);
+        transform: translateX(0);
     }
     50.01%, 100% {
-      transform: translateX(-100%);
+        transform: translateX(-100%);
     }
 }
+
+/* Responsive Styles */
+/* @media screen and (max-width: 992px) {
+    .portfolio-area .grid-item {
+        width: calc(33.33% - 20px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio-area .grid-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .portfolio-area .grid-item {
+        width: 100%;
+    }
+} */
+
 /************** /Slider ********************/
 
 
