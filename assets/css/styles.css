@@ -142,8 +142,7 @@ a.responsive:focus {
 .section-title {
     font-size: clamp(20px, 2.3vw, 40px);
     font-weight: bold;
-    text-align: center; 
-    margin: 60px 0; 
+    text-align: center;
     line-height: 1.4; 
     color: var(--color-primary);
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
