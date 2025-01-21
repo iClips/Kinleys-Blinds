@@ -1,97 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Calculator</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-</head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0ER5PGJ9PY"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-0ER5PGJ9PY');
-</script>
 <body>
     <header>
         <div class="header-container">
             <img src="kinleys_logo.png" alt="Kinleys Logo" class="logo">
-            <nav>
-                <ul>
-                    <li><a href="../">Home</a></li>
-                    <li class="active"><a href="#quote">Get a Quote</a></li>
-                    <li><a href="../contact">Contact</a></li>
-                </ul>
-            </nav>
+            <a href="../" class="back-home">Back to Home</a>
         </div>
     </header>
 
     <main>
         <section class="quote-container">
-            <h1>Window Blinds Quote Calculator</h1>
-            <div class="progress-bar">
-                <div class="step active">
-                    <span class="icon">1</span>
-                    <span class="label">Dimensions</span>
-                </div>
-                <div class="step">
-                    <span class="icon">2</span>
-                    <span class="label">Material</span>
-                </div>
-                <div class="step">
-                    <span class="icon">3</span>
-                    <span class="label">Color</span>
-                </div>
-                <div class="step">
-                    <span class="icon">4</span>
-                    <span class="label">Summary</span>
-                </div>
-            </div>
-
+            <h1>Get Your Quote</h1>
             <div id="steps-container">
-                <!-- Step 1 -->
-                <div class="step-content active" id="step-dimensions">
-                    <h2>Enter Dimensions</h2>
-                    <form id="dimension-form">
+                <form id="quote-form">
+                    <div class="form-group">
                         <label for="width">Width (cm):</label>
-                        <input type="number" id="width" required>
+                        <input type="number" id="width" placeholder="Enter width" required>
+                    </div>
+                    <div class="form-group">
                         <label for="height">Height (cm):</label>
-                        <input type="number" id="height" required>
-                        <button type="button" class="next-btn">Next</button>
-                    </form>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="step-content" id="step-material">
-                    <h2>Select Material</h2>
-                    <div id="materials"></div>
-                    <button type="button" class="next-btn">Next</button>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="step-content" id="step-color">
-                    <h2>Select Color</h2>
-                    <div id="colors"></div>
-                    <button type="button" class="next-btn">Next</button>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="step-content" id="step-summary">
-                    <h2>Quote Summary</h2>
-                    <div id="quote-summary"></div>
-                    <button id="download-pdf" style="display: none;">Download PDF</button>
-                </div>
+                        <input type="number" id="height" placeholder="Enter height" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="material">Material:</label>
+                        <select id="material" required>
+                            <option value="wood">Wood</option>
+                            <option value="plastic">Plastic</option>
+                            <option value="metal">Metal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Color:</label>
+                        <select id="color" required>
+                            <option value="standard">Standard</option>
+                            <option value="premium">Premium</option>
+                        </select>
+                    </div>
+                    <button id="calculate-btn" type="submit">Calculate Quote</button>
+                </form>
+                <div id="quote-result"></div>
+                <button id="download-pdf" style="display: none;">Download PDF</button>
             </div>
         </section>
     </main>
 </body>
-</html>
-
-
-
-
-
-
