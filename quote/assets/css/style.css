@@ -1,84 +1,49 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
     background-color: #f4f4f4;
 }
 
 header {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    height: 130px;
+    background: #333;
+    color: #fff;
     text-align: center;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    padding: 12px 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-nav ul li.active {
-    border-bottom: #62a50b;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 22px;
-}
-.title {
-    height: 70px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2%;
-}
-.title img {
-    height: 100%;
-    width: auto;
-}
-section#quote {
-    background-color: white;
     padding: 20px;
-    margin: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5%;
-    min-height: 600px;
-    overflow: auto;
+    justify-content: space-around;
+    margin: 20px 0;
 }
 
-#quote-form {
-    width: 100%;
-    max-width: 600%;    
+.step {
+    text-align: center;
+    color: #ccc;
 }
-form label {
+
+.step.active {
+    color: #62a50b;
+}
+
+.step .icon {
+    font-size: 24px;
+}
+
+.step-content {
+    display: none;
+}
+
+.step-content.active {
     display: block;
-    margin-top: 10px;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-form input, form select {
-    width: 100%;
-    padding: 10px;
-}
-
-form button {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-form button:hover {
-    background-color: #555;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
