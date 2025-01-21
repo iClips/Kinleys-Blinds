@@ -18,8 +18,8 @@
 <body>
     <header>
         <div class="title">
-            <img src="kinleys_logo.png" alt="kinleys logo"> 
-            <h1>Welcome to Kindleys Blinds and More</h1>
+            <img src="kinleys_logo.png" alt="Kinleys Blinds Logo" />
+            <h1>Welcome to Kinleys Blinds</h1>
         </div>
         <nav>
             <ul>
@@ -29,44 +29,70 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-1">
-                <button id="download-pdf" style="display: none;">Download PDF</button>
-                <div id="quote-result"></div>
+
+    <section id="quote">
+        <div class="progress-bar">
+            <div class="step active" data-step="1">
+                <span class="icon">📏</span>
+                <p>Dimensions</p>
             </div>
-            <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">                
-                <form id="quote-form">
+            <div class="step" data-step="2">
+                <span class="icon">🪟</span>
+                <p>Blind Type</p>
+            </div>
+            <div class="step" data-step="3">
+                <span class="icon">🎨</span>
+                <p>Color</p>
+            </div>
+            <div class="step" data-step="4">
+                <span class="icon">💸</span>
+                <p>Quote</p>
+            </div>
+        </div>
+
+        <div id="steps-container">
+            <!-- Step 1: Upload Photo & Enter Dimensions -->
+            <div class="step-content active" data-step="1">
+                <h2>Step 1: Dimensions</h2>
+                <form id="dimensions-form">
+                    <div class="form-group">
+                        <label for="photo-upload">Upload a photo of the window/door:</label>
+                        <input type="file" id="photo-upload" accept="image/*" />
+                    </div>
                     <div class="form-group">
                         <label for="width">Width (cm):</label>
-                        <input class="form-control" type="number" id="width" required><br><br>    
+                        <input type="number" id="width" required />
                     </div>
                     <div class="form-group">
                         <label for="height">Height (cm):</label>
-                        <input class="form-control" type="number" id="height" required><br><br>
+                        <input type="number" id="height" required />
                     </div>
-                    <div class="form-group">
-                        <label for="material">Material:</label>
-                        <select class="form-control" id="material" required>
-                            <option value="wood">Wood</option>
-                            <option value="plastic">Plastic</option>
-                            <option value="metal">Metal</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="color">Color:</label>
-                        <select id="color" required>
-                            <option value="standard">Standard</option>
-                            <option value="premium">Premium</option>
-                        </select>
-                    </div>       
-                    <button id="btn btn-primary">Calculate Quote</button>
+                    <button type="button" class="next-btn">Next</button>
                 </form>
-                      
-            </div>            
+            </div>
+
+            <!-- Step 2: Blind Type -->
+            <div class="step-content" data-step="2">
+                <h2>Step 2: Choose Blind Type</h2>
+                <div id="blind-types"></div>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <!-- Step 3: Color -->
+            <div class="step-content" data-step="3">
+                <h2>Step 3: Choose Color</h2>
+                <div id="colors"></div>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <!-- Step 4: Quote -->
+            <div class="step-content" data-step="4">
+                <h2>Step 4: Your Quote</h2>
+                <div id="quote-summary"></div>
+                <button id="download-pdf">Download Quote as PDF</button>
+            </div>
         </div>
-    </div>    
-    
+    </section>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
