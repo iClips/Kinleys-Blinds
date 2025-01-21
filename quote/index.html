@@ -17,85 +17,76 @@
 </script>
 <body>
     <header>
-        <div class="title">
-            <img src="kinleys_logo.png" alt="Kinleys Blinds Logo" />
-            <h1>Welcome to Kinleys Blinds</h1>
+        <div class="header-container">
+            <img src="kinleys_logo.png" alt="Kinleys Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="../">Home</a></li>
+                    <li class="active"><a href="#quote">Get a Quote</a></li>
+                    <li><a href="../contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="../">Home</a></li>
-                <li class="active"><a href="#quote">Get a Quote</a></li>
-                <li><a href="../contact">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section id="quote">
-        <div class="progress-bar">
-            <div class="step active" data-step="1">
-                <span class="icon">📏</span>
-                <p>Dimensions</p>
+    <main>
+        <section class="quote-container">
+            <h1>Window Blinds Quote Calculator</h1>
+            <div class="progress-bar">
+                <div class="step active">
+                    <span class="icon">1</span>
+                    <span class="label">Dimensions</span>
+                </div>
+                <div class="step">
+                    <span class="icon">2</span>
+                    <span class="label">Material</span>
+                </div>
+                <div class="step">
+                    <span class="icon">3</span>
+                    <span class="label">Color</span>
+                </div>
+                <div class="step">
+                    <span class="icon">4</span>
+                    <span class="label">Summary</span>
+                </div>
             </div>
-            <div class="step" data-step="2">
-                <span class="icon">🪟</span>
-                <p>Blind Type</p>
-            </div>
-            <div class="step" data-step="3">
-                <span class="icon">🎨</span>
-                <p>Color</p>
-            </div>
-            <div class="step" data-step="4">
-                <span class="icon">💸</span>
-                <p>Quote</p>
-            </div>
-        </div>
 
-        <div id="steps-container">
-            <!-- Step 1: Upload Photo & Enter Dimensions -->
-            <div class="step-content active" data-step="1">
-                <h2>Step 1: Dimensions</h2>
-                <form id="dimensions-form">
-                    <div class="form-group">
-                        <label for="photo-upload">Upload a photo of the window/door:</label>
-                        <input type="file" id="photo-upload" accept="image/*" />
-                    </div>
-                    <div class="form-group">
+            <div id="steps-container">
+                <!-- Step 1 -->
+                <div class="step-content active" id="step-dimensions">
+                    <h2>Enter Dimensions</h2>
+                    <form id="dimension-form">
                         <label for="width">Width (cm):</label>
-                        <input type="number" id="width" required />
-                    </div>
-                    <div class="form-group">
+                        <input type="number" id="width" required>
                         <label for="height">Height (cm):</label>
-                        <input type="number" id="height" required />
-                    </div>
+                        <input type="number" id="height" required>
+                        <button type="button" class="next-btn">Next</button>
+                    </form>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-content" id="step-material">
+                    <h2>Select Material</h2>
+                    <div id="materials"></div>
                     <button type="button" class="next-btn">Next</button>
-                </form>
-            </div>
+                </div>
 
-            <!-- Step 2: Blind Type -->
-            <div class="step-content" data-step="2">
-                <h2>Step 2: Choose Blind Type</h2>
-                <div id="blind-types"></div>
-                <button type="button" class="next-btn">Next</button>
-            </div>
+                <!-- Step 3 -->
+                <div class="step-content" id="step-color">
+                    <h2>Select Color</h2>
+                    <div id="colors"></div>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
 
-            <!-- Step 3: Color -->
-            <div class="step-content" data-step="3">
-                <h2>Step 3: Choose Color</h2>
-                <div id="colors"></div>
-                <button type="button" class="next-btn">Next</button>
+                <!-- Step 4 -->
+                <div class="step-content" id="step-summary">
+                    <h2>Quote Summary</h2>
+                    <div id="quote-summary"></div>
+                    <button id="download-pdf" style="display: none;">Download PDF</button>
+                </div>
             </div>
-
-            <!-- Step 4: Quote -->
-            <div class="step-content" data-step="4">
-                <h2>Step 4: Your Quote</h2>
-                <div id="quote-summary"></div>
-                <button id="download-pdf">Download Quote as PDF</button>
-            </div>
-        </div>
-    </section>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+        </section>
+    </main>
 </body>
 </html>
 
