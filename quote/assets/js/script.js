@@ -1,54 +1,52 @@
-const form = document.getElementById('quote-form');
-const calculateBtn = document.getElementById('calculate-btn');
-const downloadPdfBtn = document.getElementById('download-pdf');
-const quoteResultDiv = document.getElementById('quote-result');
+document.addEventListener("DOMContentLoaded", () => {
+    let currentStep = 0;
 
-const basePricePerSqUnit = 6.5; 
-const materialFactors = {
-    wood: 1.3,
-    plastic: 1.1,
-    metal: 1.2
-};
-const colorSurchargeRate = 0.05;
+    const steps = document.querySelectorAll(".step");
+    const stepContents = document.querySelectorAll(".step-content");
 
-calculateBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+    const nextBtns = document.querySelectorAll(".next-btn");
+    nextBtns.forEach((btn) =>
+        btn.addEventListener("click", () => {
+            if (currentStep < steps.length - 1) {
+                steps[currentStep].classList.remove("active");
+                stepContents[currentStep].classList.remove("active");
+                currentStep++;
+                steps[currentStep].classList.add("active");
+                stepContents[currentStep].classList.add("active");
+            }
+        })
+    );
 
-    const width = parseFloat(document.getElementById('width').value);
-    const height = parseFloat(document.getElementById('height').value);
-    const material = document.getElementById('material').value;
-    const color = document.getElementById('color').value;
+    const blindTypes = [
+        { name: "Roller", materials: ["Plastic", "Metal"], colors: ["White", "Black"] },
+        { name: "Venetian", materials: ["Wood", "Metal"], colors: ["Oak", "Gray"] },
+    ];
 
-    const area = width * height;
-    const baseCost = area * basePricePerSqUnit;
-    const materialFactor = materialFactors[material] || 1.0;
-    const adjustedCost = baseCost * materialFactor;
-    const colorSurcharge = colorSurchargeRate * adjustedCost * (color === 'premium' ? 1 : 0);
-    const quote = adjustedCost + colorSurcharge;
+    // Populate blind types dynamically
+    const blindTypesDiv = document.getElementById("blind-types");
+    blindTypes.forEach((type) => {
+        const div = document.createElement("div");
+        div.innerHTML = `<h3>${type.name}</h3>`;
+        blindTypesDiv.appendChild(div);
+    });
 
-    quoteResultDiv.innerText = `Quote: R${quote.toFixed(2)}`;
-    downloadPdfBtn.style.display = 'block';
-});
+    const colorsDiv = document.getElementById("colors");
+    blindTypes[0].colors.forEach((color) => {
+        const div = document.createElement("div");
+        div.innerText = color;
+        colorsDiv.appendChild(div);
+    });
 
-downloadPdfBtn.addEventListener('click', () => {
-    try {
+    // Quote calculation
+    const basePricePerSqUnit = 6.5;
+    document.getElementById("download-pdf").addEventListener("click", () => {
+        const width = parseFloat(document.getElementById("width").value);
+        const height = parseFloat(document.getElementById("height").value);
+        const area = width * height;
+        const quote = area * basePricePerSqUnit;
+
         const doc = new jsPDF();
-        
-        const width = document.getElementById('width').value;
-        const height = document.getElementById('height').value;
-        const material = document.getElementById('material').value;
-        const color = document.getElementById('color').value;
-        const quote = quoteResultDiv.innerText.split(': ')[1];
-    
-        doc.text('Quote', 10, 10);
-        doc.text(`Width: ${width} cm`, 10, 20);
-        doc.text(`Height: ${height} cm`, 10, 30);
-        doc.text(`Material: ${material}`, 10, 40);
-        doc.text(`Color: ${color}`, 10, 50);
-        doc.text(`Quote: R${quote}`, 10, 60);
-        
-        doc.save('quote.pdf');
-    } catch (ex) {
-        alert('The system could not generate your quote. You might not have an internet connection.');        
-    }
+        doc.text(`Quote: R${quote.toFixed(2)}`, 10, 10);
+        doc.save("quote.pdf");
+    });
 });
