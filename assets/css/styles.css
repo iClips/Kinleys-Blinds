@@ -415,8 +415,7 @@ header {
     box-shadow: none;    
 }
 
-
-@media (max-width: 768px) {
+@media (max-width: 1180px) {
     .top_nav {
         display: none;
     }
@@ -424,6 +423,10 @@ header {
     header {
         height: 75px;
     }
+}
+
+@media (max-width: 768px) {
+    
 
     body {
         padding-top: 0;
