@@ -991,7 +991,104 @@ a .fa {
 
 
 
+.why-choose-us {
+    background-color: #ffffff;
+    padding: 50px 20px;
+    text-align: center;
+}
 
+.why-choose-us h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    width: 280px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 3px solid #ff8c00;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    color: #333;
+}
+
+.feature-card p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Hover Animation - Sliding Blinds */
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.05), rgba(0,0,0,0));
+    z-index: 1;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.feature-card:hover::before {
+    transform: translateX(0);
+}
+
+/* Call-to-action section */
+.call-to-action {
+    background-color: #ff8c00;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.call-to-action h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.call-to-action button {
+    background-color: #fff;
+    color: #ff8c00;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.call-to-action button:hover {
+    background-color: #f4f4f4;
+}
 
 
 
