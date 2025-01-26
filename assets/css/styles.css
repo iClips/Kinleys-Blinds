@@ -1401,9 +1401,14 @@ a .fa {
 
 
 /***************************** Services ********************************/
-.service_item {
-    margin-bottom: 60px;
+.service-item {
+    margin-bottom: 10px;
+    padding: 50px;
+    background-color: rgba(250, 250, 250, 0.1);
+    transition: all 0.5s;
+    height: 450px;
 }
+
 .service_item > h3 {
     margin: 25px 0 15px;
     text-align: center;
