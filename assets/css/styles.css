@@ -1277,6 +1277,7 @@ a .fa {
 }
 
 .caption {
+    z-index: 10000;
     position: absolute;
     bottom: 10px;
     left: 50%;
