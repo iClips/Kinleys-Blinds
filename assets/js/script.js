@@ -5,12 +5,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const loadingElement = document.getElementById("loading");
     if (loadingElement) {
         window.addEventListener("load", () => {
+            console.log('load event');
             loadingElement.style.transition = "opacity 0.5s";
             loadingElement.style.opacity = "0";
             setTimeout(() => {
                 loadingElement.style.display = 'none';
             }, 500);
         });
+    } else {
+        console.log('no loading elem');
     }
 
     initSectionAnimations();
