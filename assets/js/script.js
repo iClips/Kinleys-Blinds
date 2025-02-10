@@ -4,8 +4,18 @@ let isMenuOpen = false;
 document.addEventListener('DOMContentLoaded', function () {
     const loadingElement = document.getElementById("loading");
     if (loadingElement) {
+        const timeout = setTimeout(() => {
+            console.warn('Page load timeout reached.');
+            loadingElement.style.transition = "opacity 0.5s";
+            loadingElement.style.opacity = "0";
+            setTimeout(() => {
+                loadingElement.style.display = 'none';
+            }, 500);
+        }, 10000); // 10 seconds timeout
+
         window.addEventListener("load", () => {
-            console.log('load event');
+            console.log('Page loaded successfully');
+            clearTimeout(timeout); // Cancel the timeout if the page loads in time
             loadingElement.style.transition = "opacity 0.5s";
             loadingElement.style.opacity = "0";
             setTimeout(() => {
@@ -157,17 +167,3 @@ function closeModal() {
         overlay.style.display = 'none';
     }, 400);
 }
-
-$(document).ready(function () {
-    $('[data-fancybox="gallery"]').fancybox({
-        buttons: ['zoom', 'slideShow', 'fullScreen', 'thumbs', 'close'],
-        animationEffect: "zoom",
-        transitionEffect: "fade",
-        loop: true,
-        keyboard: true,
-        protect: true,
-        arrows: true,
-        infobar: true,
-        zoom: true
-    });
-});
