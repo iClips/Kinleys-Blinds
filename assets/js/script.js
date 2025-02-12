@@ -130,6 +130,7 @@ function initScrollEffects() {
             if (currentScroll > lastScrollTop) {
                 topNav.classList.add('hidden');
                 navBar.classList.add('show');
+                navBar.style.top = "0px";
             } else if (currentScroll <= 0) {
                 topNav.classList.remove('hidden');
                 navBar.classList.remove('show');
