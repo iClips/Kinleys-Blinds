@@ -1,37 +1,28 @@
 let heroAnimationInterval = null;
 let isMenuOpen = false;
+let timeout = null;
 
+const loadingElement = document.getElementById("loading");
+if (loadingElement) {
+    timeout = setTimeout(() => {
+        loadingElement.style.transition = "opacity 0.5s";
+        loadingElement.style.opacity = "0";
+        setTimeout(() => {
+            loadingElement.style.display = 'none';
+        }, 500);
+    }, 10000); // 5 seconds timeout
+    
+        
+} else {
+    console.log('no loading elem');
+}
 document.addEventListener('DOMContentLoaded', function () {
-    const loadingElement = document.getElementById("loading");
-    if (loadingElement) {
-        const timeout = setTimeout(() => {
-            console.warn('Page load timeout reached.');
-            loadingElement.style.transition = "opacity 0.5s";
-            loadingElement.style.opacity = "0";
-            setTimeout(() => {
-                loadingElement.style.display = 'none';
-            }, 500);
-        }, 10000); // 10 seconds timeout
-
-        window.addEventListener("load", () => {
-            console.log('Page loaded successfully');
-            clearTimeout(timeout); // Cancel the timeout if the page loads in time
-            loadingElement.style.transition = "opacity 0.5s";
-            loadingElement.style.opacity = "0";
-            setTimeout(() => {
-                loadingElement.style.display = 'none';
-            }, 500);
-        });
-    } else {
-        console.log('no loading elem');
-    }
-
     initSectionAnimations();
     initHeroAnimation();
     initScrollEffects();
     initIntoViewAnim();
 
-    observeElements('caption');    
+    observeElements('caption');
 });
 
 const observeElements = (className) => {
