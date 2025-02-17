@@ -1651,67 +1651,17 @@ a .fa {
 /***************************** /Testimonials ********************************/
 
 /***************************** Footer ******************************/
-/* footer {
+ footer {
     background: url(../images/portfolio1.jpg)no-repeat;
     background-size:cover;
     background-attachment: fixed;
     background-position: bottom;
     position:relative;
     padding-top:45px;
-} */
+}
 
 /* Footer Styling */
-footer {
-    background-color: #7a2d2d; /* Dark red background */
-    color: #fff;
-    padding: 20px 0;
-}
-
-/* Blinds Container */
-.footer_blinds {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px 0;
-}
-
-/* Window Frame */
-.window {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    margin: auto;
-    border: 10px solid white; /* Window frame */
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-    background: url('/mnt/data/footer_bg.jpg') center/cover no-repeat;
-}
-
-/* Blinds */
-.blind {
-    width: 33.33%;
-    height: 80%;
-    background-color: #5a503d; /* Brownish blind color */
-    position: relative;
-    transition: height 0.5s ease-in-out;
-}
-
-.left {
-    border-right: 2px solid white;
-}
-
-.right {
-    border-left: 2px solid white;
-}
-
-/* Animation for Blinds on Hover */
-.blind:hover {
-    height: 50%;
-}
-
-/* footer::after {
+ footer::after {
     background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
     content: "";
     height: 100%;
@@ -1724,7 +1674,7 @@ footer {
     position:relative; 
     z-index:1; 
     color:#fff;
-}*/
+}
 .footer_item { 
     margin-top: 75px;
 }
