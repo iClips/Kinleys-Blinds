@@ -10,7 +10,7 @@ if (loadingElement) {
         setTimeout(() => {
             loadingElement.style.display = 'none';
         }, 500);
-    }, 10000); // 5 seconds timeout
+    }, 5000); // 5 seconds timeout
     
         
 } else {
