@@ -424,7 +424,9 @@ header {
     .top_nav {
         display: none;
     }
-
+    #navBar {
+	    transform: translateY(0px);
+    }
     header {
         height: 75px;
     }
