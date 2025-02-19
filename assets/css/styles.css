@@ -1245,9 +1245,10 @@ a .fa {
 /* Image Styling */
 .image {
     position: absolute;
-    width: 110%; /* Ensure it fully covers the container */
-    height: 110%;
-    background-size: cover;
+    width: 200%; /* Ensure it fully covers the container */
+    height: 200%;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     animation: moveImages 8s infinite ease-in-out;
 }
