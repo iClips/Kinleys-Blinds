@@ -1219,7 +1219,7 @@ a .fa {
     gap: 20px;
 }
 
-.grid-item {
+.portfolio-area .grid-item {
     position: relative;
     width: 300px;
     height: 300px;
@@ -1230,7 +1230,7 @@ a .fa {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.grid-item:hover {
+.portfolio-area .grid-item:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
@@ -1262,11 +1262,11 @@ a .fa {
     z-index: 2;
 }
 
-.grid-item:hover .image.before {
+.portfolio-area .grid-item:hover .image.before {
     opacity: 0;
 }
 
-.grid-item:hover .image.after {
+.portfolio-area .grid-item:hover .image.after {
     opacity: 1;
 }
 
@@ -1290,48 +1290,8 @@ a .fa {
   transform: scale(1) translateY(0);
 }
 
-.grid-item:hover .caption {
+.portfolio-area .grid-item:hover .caption {
     opacity: 1;
-}
-
-.grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.grid-item {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.image-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.image {
-    position: absolute;
-    width: 150%; /* Making it bigger than the container */
-    height: 150%;
-    background-size: cover;
-    background-position: center;
-    animation: moveImages 6s infinite linear;
-}
-
-.before {
-    z-index: 2;
-}
-
-.after {
-    z-index: 1;
-    opacity: 0.8;
 }
 
 /* Keyframes for animation */
@@ -1353,16 +1313,6 @@ a .fa {
     }
 }
 
-.caption {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-}
 
 /********************** /Portfolio ***************************/
 
