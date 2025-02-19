@@ -55,6 +55,19 @@
         a:hover {
             color: var(--secondary-color);
         }
+        .social {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            gap: 18px;
+        }
+        .social li a {
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
         .home-button {
             display: inline-block;
             margin-top: 20px;
@@ -90,6 +103,11 @@
 <body>
     <header>
         <h1>Contact Us</h1>
+        <ul class="social">
+            <li><a href="https://wa.me/+27797986412?text=Dear Kinleys Blinds and More"><span class="fa fa-whatsapp"></span></a></li>
+            <li><a target="_blank" href="https://www.facebook.com/kinleys.co.za/"><span class="fa fa-facebook"></span></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/kinleysblinds/?hl=en"><span class="fa fa-instagram"></span></a></li>
+        </ul>
     </header>
     <main>
         <section>
@@ -98,12 +116,12 @@
             <ul>
                 <li>Phone: <a href="tel:0797986412">079 798 6412</a></li>
                 <li>Email: <a href="mailto:sales@kinleys.co.za">sales@kinleys.co.za</a></li>
-                <li>Address: 123 Kinleys Street, South Africa</li>
+                <li>14 Dahlia St, Lentegeur, Cape Town, 7785, South Africa</li>
                 <li>Business Hours:
                     <ul>
                         <li>Monday - Friday: 9:00 AM - 6:00 PM</li>
                         <li>Saturday: 9:00 AM - 3:00 PM</li>
-                        <li>Sunday: Closed</li>
+                        <li>Sundays and Public Holidays: Closed</li>
                     </ul>
                 </li>
             </ul>
