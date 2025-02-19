@@ -1210,7 +1210,6 @@ a .fa {
 .portfolio-area .button:hover {
     background-color: #003399;
 }
-
 .portfolio-area .grid {
     margin: 40px auto;
     display: flex;
@@ -1221,8 +1220,8 @@ a .fa {
 
 .portfolio-area .grid-item {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: clamp(250px, 30vw, 400px); /* Scales between 250px and 400px */
+    aspect-ratio: 1 / 1; /* Keeps it square */
     overflow: hidden;
     background-color: #fff;
     border-radius: 10px;
@@ -1245,12 +1244,12 @@ a .fa {
 /* Image Styling */
 .image {
     position: absolute;
-    width: 200%; /* Ensure it fully covers the container */
-    height: 200%;
-    background-size: contain;
-    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Ensures full coverage */
     background-position: center;
-    animation: moveImages 8s infinite ease-in-out;
+    background-repeat: no-repeat;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .image.before {
@@ -1263,7 +1262,7 @@ a .fa {
     z-index: 2;
 }
 
-/* Image Hover Effect */
+/* Hover Effect */
 .portfolio-area .grid-item:hover .image.before {
     opacity: 0;
 }
@@ -1272,28 +1271,8 @@ a .fa {
     opacity: 1;
 }
 
-/* Keyframes for smooth motion */
-@keyframes moveImages {
-    0% {
-        transform: translateY(-5%) translateX(0);
-    }
-    25% {
-        transform: translateY(5%) translateX(0);
-    }
-    50% {
-        transform: translateY(5%) translateX(5%);
-    }
-    75% {
-        transform: translateY(-5%) translateX(5%);
-    }
-    100% {
-        transform: translateY(-5%) translateX(0);
-    }
-}
-
 /* Caption Styling */
 .caption {
-    z-index: 10;
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -1310,7 +1289,6 @@ a .fa {
 .portfolio-area .grid-item:hover .caption {
     opacity: 1;
 }
-
 /********************** /Portfolio ***************************/
 
 
