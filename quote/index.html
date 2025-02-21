@@ -315,7 +315,8 @@
             document.querySelectorAll('.step')[2].classList.add('active');
         });
         
-        document.getElementById('generate-quotation').addEventListener('click', () => {
+        document.getElementById('generate-quotation').addEventListener('click', (event) => {
+            event.preventDefault();
             const width = document.getElementById('width').value;
             const height = document.getElementById('height').value;
             const mountType = document.getElementById('mount-type').value;
@@ -324,21 +325,17 @@
         
             let price = 0;
             if (mountType === 'inside') {
-                price = (width * height) / 100 * 500; // default price for inside mount
+                price = (width * height) / 100 * 500;
             } else if (mountType === 'outside') {
-                price = (width * height) / 100 * 750; // default price for outside mount
-                price += (excess * width) / 100 * 100; // add excess price
+                price = (width * height) / 100 * 750;
+                price += (excess * width) / 100 * 100;
             }
         
             if (color === 'premium') {
-                price *= 1.05; // add 5% for premium color
+                price *= 1.05;
             }
         
-            const quotationText = `Quotation for ${width}cm x ${height}cm blinds:
-        Mount Type: ${mountType}
-        Excess: ${excess}cm
-        Color: ${color}
-        Price: R${price.toFixed(2)}`;
+            const quotationText = `Quotation for ${width}cm x ${height}cm blinds:\n\nMount Type: ${mountType}\nExcess: ${excess}cm\nColor: ${color}\nPrice: R${price.toFixed(2)}`;
         
             document.getElementById('quotation-text').innerText = quotationText;
             document.getElementById('step-4').style.display = 'none';
