@@ -14,13 +14,13 @@
 
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            background-color: #f7f7f7;
         }
 
         .step-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            width: 80%;
+            margin: 40px auto;
+            background-color: #fff;
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 10px;
@@ -30,28 +30,54 @@
         .step {
             padding: 10px;
             border-bottom: 1px solid #ddd;
-        }
-
-        .step:last-child {
-            border-bottom: none;
+            font-size: 18px;
+            font-weight: bold;
         }
 
         .step.active {
-            background-color: var(--primary-color);
+            background-color: #4CAF50;
             color: #fff;
         }
 
         .button {
-            background-color: var(--primary-color);
+            background-color: #4CAF50;
             color: #fff;
             border: none;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 30px;
+            font-size: 18px;
             cursor: pointer;
+            border-radius: 10px;
         }
 
         .button:hover {
-            background-color: var(--secondary-color);
+            background-color: #3e8e41;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        #quotation-result {
+            padding: 20px;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #quotation-text {
+            font-size: 18px;
         }
     </style>
 </head>
