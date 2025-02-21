@@ -7,62 +7,90 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
     <style>
-        /* Primary and secondary colors from styles.css */
         :root {
             --primary-color: #004466;
             --secondary-color: #FFD700;        
             --text-color: #333;
             --background-color: #f9f9f9;
+            --border-radius: 8px;
+            --transition-speed: 0.3s;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            animation: fadeInDown 1s ease-in-out;
+            font-family: "Poppins", sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
         }
 
         header {
             background-color: var(--primary-color);
             color: white;
             width: 100%;
-            height: 120px;
             padding: 20px;
             font-size: 24px;
             font-weight: bold;
-            animation: fadeInDown 1s ease-in-out;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-        }
-        
-        .step-container {
-            width: 80%;
-            margin: 40px auto;
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 1s ease-in-out;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .step {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-            font-size: 18px;
+        .back-home-button {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            transition: background-color var(--transition-speed) ease-in-out;
             font-weight: bold;
         }
 
-        .step.active {
-            background-color: #4CAF50;
-            color: #fff;
+        .back-home-button:hover {
+            background-color: #ffcc00;
         }
 
+        .social {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .social li a {
+            color: white;
+            transition: color var(--transition-speed);
+            font-size: 20px;
+        }
+        .social li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .step-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .step {
+            padding: 12px 18px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+            transition: all var(--transition-speed) ease-in-out;
+        }
+        .step.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
         .button {
             background-color: #4CAF50;
             color: #fff;
@@ -140,26 +168,12 @@
             color: white;
             transition: color 0.3s;
         }
-        .home-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease-in-out;
-        }
-        .home-button:hover {
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-        }
+      
     </style>
 </head>
 <body>
     <header>
+        <button class="back-home-button" onclick="window.location.href='/'">Back Home</button>
         <h1>Quote Generator</h1>
         <ul class="social">
             <li><a href="https://wa.me/+27797986412?text=Dear Kinleys Blinds and More"><span class="fa fa-whatsapp"></span></a></li>
@@ -229,8 +243,6 @@
             <button class="button" id="download-pdf">Download PDF</button>
         </div>
     </form>
-
-    <button class="home-button" onclick="window.location.href='/'">Go to Home Page</button>
     
     <script>
         // Step 1: Upload Image
