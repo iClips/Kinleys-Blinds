@@ -1,44 +1,226 @@
-<body>
-    <header>
-        <div class="header-container">
-            <img src="kinleys_logo.png" alt="Kinleys Logo" class="logo">
-            <a href="../" class="back-home">Back to Home</a>
-        </div>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blinds Quotation Generator</title>
+    <style>
+        /* Primary and secondary colors from styles.css */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #f1c40f;
+        }
 
-    <main>
-        <section class="quote-container">
-            <h1>Get Your Quote</h1>
-            <div id="steps-container">
-                <form id="quote-form">
-                    <div class="form-group">
-                        <label for="width">Width (cm):</label>
-                        <input type="number" id="width" placeholder="Enter width" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="height">Height (cm):</label>
-                        <input type="number" id="height" placeholder="Enter height" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="material">Material:</label>
-                        <select id="material" required>
-                            <option value="wood">Wood</option>
-                            <option value="plastic">Plastic</option>
-                            <option value="metal">Metal</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="color">Color:</label>
-                        <select id="color" required>
-                            <option value="standard">Standard</option>
-                            <option value="premium">Premium</option>
-                        </select>
-                    </div>
-                    <button id="calculate-btn" type="submit">Calculate Quote</button>
-                </form>
-                <div id="quote-result"></div>
-                <button id="download-pdf" style="display: none;">Download PDF</button>
-            </div>
-        </section>
-    </main>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .step-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .step {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step.active {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="step-container">
+        <div class="step active">Step 1: Upload Image</div>
+        <div class="step">Step 2: Enter Dimensions</div>
+        <div class="step">Step 3: Choose Mount Type</div>
+        <div class="step">Step 4: Choose Color</div>
+    </div>
+
+    <form id="quotation-form">
+        <!-- Step 1: Upload Image -->
+        <div id="step-1" style="display: block;">
+            <input type="file" id="image-upload" accept="image/*">
+            <button class="button" id="next-step-1">Next</button>
+        </div>
+
+        <!-- Step 2: Enter Dimensions -->
+        <div id="step-2" style="display: none;">
+            <label for="width">Width (cm):</label>
+            <input type="number" id="width" required>
+            <br>
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" required>
+            <br>
+            <button class="button" id="back-step-2">Back</button>
+            <button class="button" id="next-step-2">Next</button>
+        </div>
+
+        <!-- Step 3: Choose Mount Type -->
+        <div id="step-3" style="display: none;">
+            <label for="mount-type">Mount Type:</label>
+            <select id="mount-type" required>
+                <option value="">Select Mount Type</option>
+                <option value="inside">Inside Mount</option>
+                <option value="outside">Outside Mount</option>
+            </select>
+            <br>
+            <label for="excess" style="display: none;" id="excess-label">Excess (cm):</label>
+            <input type="number" id="excess" style="display: none;" value="3">
+            <br>
+            <button class="button" id="back-step-3">Back</button>
+            <button class="button" id="next-step-3">Next</button>
+        </div>
+
+        <!-- Step 4: Choose Color -->
+        <div id="step-4" style="display: none;">
+            <label for="color">Color:</label>
+            <select id="color" required>
+                <option value="">Select Color</option>
+                <option value="standard">Standard</option>
+                <option value="premium">Premium (+5%)</option>
+            </select>
+            <br>
+            <button class="button" id="back-step-4">Back</button>
+            <button class="button" id="generate-quotation">Generate Quotation</button>
+        </div>
+
+        <!-- Quotation Result -->
+        <div id="quotation-result" style="display: none;">
+            <h2>Quotation Result</h2>
+            <p id="quotation-text"></p>
+            <button class="button" id="download-pdf">Download PDF</button>
+        </div>
+    </form>
+
+    <script>
+        // Step 1: Upload Image
+        document.getElementById('next-step-1').addEventListener('click', () => {
+            document.getElementById('step-1').style.display = 'none';
+            document.getElementById('step-2').style.display = 'block';
+            document.querySelectorAll('.step')[0].classList.remove('active');
+            document.querySelectorAll('.step')[1].classList.add('active');
+        });
+        
+        // Step 2: Enter Dimensions
+        document.getElementById('back-step-2').addEventListener('click', () => {
+            document.getElementById('step-2').style.display = 'none';
+            document.getElementById('step-1').style.display = 'block';
+            document.querySelectorAll('.step')[1].classList.remove('active');
+            document.querySelectorAll('.step')[0].classList.add('active');
+        });
+        
+        document.getElementById('next-step-2').addEventListener('click', () => {
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+            if (width && height) {
+                document.getElementById('step-2').style.display = 'none';
+                document.getElementById('step-3').style.display = 'block';
+                document.querySelectorAll('.step')[1].classList.remove('active');
+                document.querySelectorAll('.step')[2].classList.add('active');
+            } else {
+                alert('Please enter both width and height');
+            }
+        });
+        
+        // Step 3: Choose Mount Type
+        document.getElementById('back-step-3').addEventListener('click', () => {
+            document.getElementById('step-3').style.display = 'none';
+            document.getElementById('step-2').style.display = 'block';
+            document.querySelectorAll('.step')[2].classList.remove('active');
+            document.querySelectorAll('.step')[1].classList.add('active');
+        });
+        
+        document.getElementById('mount-type').addEventListener('change', (e) => {
+            if (e.target.value === 'outside') {
+                document.getElementById('excess-label').style.display = 'block';
+                document.getElementById('excess').style.display = 'block';
+            } else {
+                document.getElementById('excess-label').style.display = 'none';
+                document.getElementById('excess').style.display = 'none';
+            }
+        });
+        
+        document.getElementById('next-step-3').addEventListener('click', () => {
+            const mountType = document.getElementById('mount-type').value;
+            if (mountType) {
+                document.getElementById('step-3').style.display = 'none';
+                document.getElementById('step-4').style.display = 'block';
+                document.querySelectorAll('.step')[2].classList.remove('active');
+                document.querySelectorAll('.step')[3].classList.add('active');
+            } else {
+                alert('Please select a mount type');
+            }
+        });
+        
+        // Step 4: Choose Color
+        document.getElementById('back-step-4').addEventListener('click', () => {
+            document.getElementById('step-4').style.display = 'none';
+            document.getElementById('step-3').style.display = 'block';
+            document.querySelectorAll('.step')[3].classList.remove('active');
+            document.querySelectorAll('.step')[2].classList.add('active');
+        });
+        
+        document.getElementById('generate-quotation').addEventListener('click', () => {
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+            const mountType = document.getElementById('mount-type').value;
+            const excess = document.getElementById('excess').value;
+            const color = document.getElementById('color').value;
+        
+            let price = 0;
+            if (mountType === 'inside') {
+                price = (width * height) / 100 * 500; // default price for inside mount
+            } else if (mountType === 'outside') {
+                price = (width * height) / 100 * 750; // default price for outside mount
+                price += (excess * width) / 100 * 100; // add excess price
+            }
+        
+            if (color === 'premium') {
+                price *= 1.05; // add 5% for premium color
+            }
+        
+            const quotationText = `Quotation for ${width}cm x ${height}cm blinds:
+        Mount Type: ${mountType}
+        Excess: ${excess}cm
+        Color: ${color}
+        Price: R${price.toFixed(2)}`;
+        
+            document.getElementById('quotation-text').innerText = quotationText;
+            document.getElementById('step-4').style.display = 'none';
+            document.getElementById('quotation-result').style.display = 'block';
+        });
+        
+        document.getElementById('download-pdf').addEventListener('click', () => {
+            const quotationText = document.getElementById('quotation-text').innerText;
+            // todo: generate pdf and download
+            console.log(quotationText);
+        });
+    </script>
 </body>
+</html>
