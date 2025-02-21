@@ -5,16 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blinds Quotation Generator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
     <style>
         /* Primary and secondary colors from styles.css */
         :root {
             --primary-color: #3498db;
-            --secondary-color: #f1c40f;
+            --secondary-color: #f1c40f;            
+            --text-color: #333;
+            --background-color: #f9f9f9;
         }
 
         body {
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
+            animation: fadeInDown 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .step-container {
@@ -25,6 +33,7 @@
             border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .step {
@@ -47,6 +56,7 @@
             font-size: 18px;
             cursor: pointer;
             border-radius: 10px;
+            transition: background-color 0.3s ease-in-out;
         }
 
         .button:hover {
@@ -79,9 +89,26 @@
         #quotation-text {
             font-size: 18px;
         }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Contact Us</h1>
+        <ul class="social">
+            <li><a href="https://wa.me/+27797986412?text=Dear Kinleys Blinds and More"><span class="fa fa-whatsapp"></span></a></li>
+            <li><a target="_blank" href="https://www.facebook.com/kinleys.co.za/"><span class="fa fa-facebook"></span></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/kinleysblinds/?hl=en"><span class="fa fa-instagram"></span></a></li>
+        </ul>
+    </header>
     <div class="step-container">
         <div class="step active">Step 1: Upload Image</div>
         <div class="step">Step 2: Enter Dimensions</div>
