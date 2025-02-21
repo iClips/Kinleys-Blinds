@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blinds Quotation Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         /* Primary and secondary colors from styles.css */
         :root {
@@ -218,7 +219,10 @@
         
         document.getElementById('download-pdf').addEventListener('click', () => {
             const quotationText = document.getElementById('quotation-text').innerText;
-            // todo: generate pdf and download
+        
+            const doc = new jsPDF();
+            doc.text(quotationText, 10, 10);
+            doc.save('quotation.pdf');
             console.log(quotationText);
         });
     </script>
