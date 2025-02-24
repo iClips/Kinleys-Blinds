@@ -1,7 +1,6 @@
-<?php
+?php
 require_once './inc/db.php';
 
-$products = [];
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $limit = 5;
 
@@ -22,8 +21,26 @@ $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
 
 // Check if query was successful
+header('Content-Type: application/json');
+
 if ($stmt->rowCount() > 0) {
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $pagination = [];
+    for ($i = 1; $i <= $totalPages; $i++) {
+        $pagination[] = [
+            'number' => $i,
+            'active' => $i == $page
+        ];
+    }
+    
+    echo json_encode([
+        'products' => $products,
+        'pagination' => $pagination,
+        'error' => null
+    ]);
+
+    
 } else {
     // Handle case where no products are found
     $noProductsMessage = '
@@ -32,6 +49,10 @@ if ($stmt->rowCount() > 0) {
             <p>To add a new product, click the "Add New Product" button above.</p>
         </div>
     ';
+        echo json_encode([
+        'products' => null,
+        'pagination' => null,
+        'error' => $noProductsMessage
+    ]);
 }
-
 ?>
