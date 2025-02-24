@@ -1,40 +1,3 @@
-<?php
-require_once './inc/db.php';
-
-$products = [];
-$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-$limit = 5;
-
-// Get total number of products
-$stmt = $pdo->query("SELECT COUNT(*) FROM products");
-$totalProducts = $stmt->fetchColumn();
-
-// Calculate total number of pages
-$totalPages = ceil($totalProducts / $limit);
-
-// Calculate offset
-$offset = ($page - 1) * $limit;
-
-// Get products for current page
-$stmt = $pdo->prepare("SELECT * FROM products ORDER BY id LIMIT :limit OFFSET :offset");
-$stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-$stmt->execute();
-
-// Check if query was successful
-if ($stmt->rowCount() > 0) {
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} else {
-    // Handle case where no products are found
-    $noProductsMessage = '
-        <div class="alert alert-info">
-            <h4>No products found!</h4>
-            <p>To add a new product, click the "Add New Product" button above.</p>
-        </div>
-    ';
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,6 +51,60 @@ if ($stmt->rowCount() > 0) {
         <?php echo $noProductsMessage; ?>
         <?php endif; ?>
     </div>
-    <script src="script.js"></script>
+    <script>
+        const productsDiv = document.getElementById('products');
+        const paginationDiv = document.getElementById('pagination');
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = urlParams.get('page') || 1;
+        
+        fetch(`products.php?page=${page}`)
+            .then(response => response.json())
+            .then(data => {
+                const productsHtml = data.products.map(product => `
+                    <tr>
+                        <td><img src="${product.image_url}" alt="${product.name}"></td>
+                        <td>${product.name}</td>
+                        <td>${product.description}</td>
+                        <td>${product.quantity}</td>
+                        <td>${product.colors}</td>
+                        <td>${product.widths}</td>
+                        <td>
+                            <a href="edit-product.php?id=${product.id}" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="delete-product.php?id=${product.id}" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                `).join('');
+        
+                const paginationHtml = data.pagination.map(page => `
+                    <li class="page-item ${page.active ? 'active' : ''}">
+                        <a href="?page=${page.number}" class="page-link">${page.number}</a>
+                    </li>
+                `).join('');
+        
+                productsDiv.innerHTML = `
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Colors</th>
+                                <th>Widths</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${productsHtml}
+                        </tbody>
+                    </table>
+                `;
+        
+                paginationDiv.innerHTML = paginationHtml;
+            })
+            .catch(error => console.error(error));
+
+    </script>
 </body>
 </html>
