@@ -1,6 +1,10 @@
 <?php
-require_once 'db.php';
+require_once '../inc/db.php';
 
+if (!$pdo) {
+    echo "Database Error. The system does not have a connection to the database.";
+    return;
+}
 // Create table if it doesn't exist
 $stmt = $pdo->query("CREATE TABLE IF NOT EXISTS products (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -39,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ':image_url' => $image_url,
     ]);
 
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit;
 }
 ?>
