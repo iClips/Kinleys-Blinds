@@ -532,6 +532,7 @@ header {
     margin-top: 0px;
     top: 0px;
     z-index: 20000;
+    overflow-y: hidden;
 }
 #loading-center{
     width: 100%;
