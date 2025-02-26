@@ -251,26 +251,26 @@
     <form id="quotation-form">
         <!-- Step 1: Upload Image -->
         <div id="step-1" style="display: block;">
-            <input type="file" id="image-upload" accept="image/*">
+            <input type="file" id="image-upload" name="image" accept="image/*">
             <button class="button" id="next-step-1">Next</button>
         </div>
-
+    
         <!-- Step 2: Enter Dimensions -->
         <div id="step-2" style="display: none;">
             <label for="width">Width (cm):</label>
-            <input type="number" id="width" required>
+            <input type="number" id="width" name="width" required>
             <br>
             <label for="height">Height (cm):</label>
-            <input type="number" id="height" required>
+            <input type="number" id="height" name="height" required>
             <br>
             <button class="button" id="back-step-2">Back</button>
             <button class="button" id="next-step-2">Next</button>
         </div>
-
+    
         <!-- Step 3: Choose Blind Type -->
         <div id="step-3" style="display: none;">
             <label for="blind-type">Blind Type:</label>
-            <select id="blind-type" required>
+            <select id="blind-type" name="blind_type" required>
                 <option value="">Select Blind Type</option>
                 <option value="roman">Roman</option>
                 <option value="roller">Roller</option>
@@ -282,11 +282,11 @@
             <button class="button" id="back-step-3">Back</button>
             <button class="button" id="next-step-3">Next</button>
         </div>
-
+    
         <!-- Step 4: Choose Mount Type -->
         <div id="step-4" style="display: none;">
             <label for="mount-type">Mount Type:</label>
-            <select id="mount-type" required>
+            <select id="mount-type" name="mount_type" required>
                 <option value="">Select Mount Type</option>
                 <option value="inside">Inside Mount</option>
                 <option value="outside">Outside Mount</option>
@@ -295,11 +295,11 @@
             <button class="button" id="back-step-4">Back</button>
             <button class="button" id="next-step-4">Next</button>
         </div>
-
+    
         <!-- Step 5: Choose Color -->
         <div id="step-5" style="display: none;">
             <label for="color">Color:</label>
-            <select id="color" required>
+            <select id="color" name="color" required>
                 <option value="">Select Color</option>
                 <option value="standard">Standard</option>
                 <option value="premium">Premium (+5%)</option>
@@ -310,16 +310,18 @@
         </div>
     </form>
 
-        <!-- Quotation Result -->
-        <div id="quotation-result" style="display: none;">
-            <h2>Quotation Result</h2>
-            <p id="quotation-text"></p>
-            <button class="button" id="download-pdf">Download PDF</button>
-        </div>
-    </form>
+
+
+    <!-- Quotation Result -->
+    <div id="quotation-result" style="display: none;">
+        <h2>Quotation Result</h2>
+        <p id="quotation-text"></p>
+        <button class="button" id="download-pdf">Download PDF</button>
+    </div>
     
     <script>
         document.getElementById('next-step-1').addEventListener('click', () => {
+            console.log('Step 1 Next');
             document.getElementById('step-1').style.display = 'none';
             document.getElementById('step-2').style.display = 'block';
             document.querySelectorAll('.step')[0].classList.remove('active');
@@ -327,6 +329,7 @@
         });
         
         document.getElementById('next-step-2').addEventListener('click', () => {
+            console.log('Step 2 Next');
             const width = document.getElementById('width').value;
             const height = document.getElementById('height').value;
             if (width && height) {
@@ -335,11 +338,12 @@
                 document.querySelectorAll('.step')[1].classList.remove('active');
                 document.querySelectorAll('.step')[2].classList.add('active');
             } else {
-                alert('Please enter both width and height');
+                alert('Kindly enter both width and height');
             }
         });
         
         document.getElementById('next-step-3').addEventListener('click', () => {
+            console.log('Step 3 Next');
             const mountType = document.getElementById('mount-type').value;
             if (mountType) {
                 document.getElementById('step-3').style.display = 'none';
@@ -347,11 +351,12 @@
                 document.querySelectorAll('.step')[2].classList.remove('active');
                 document.querySelectorAll('.step')[3].classList.add('active');
             } else {
-                alert('Please select a mount type');
+                alert('Kindly select a mount type');
             }
         });
         
         document.getElementById('next-step-4').addEventListener('click', () => {
+            console.log('Step 4 Next');
             document.getElementById('step-4').style.display = 'none';
             document.getElementById('step-5').style.display = 'block';
             document.querySelectorAll('.step')[3].classList.remove('active');
@@ -359,26 +364,31 @@
         });
         
         document.getElementById('back-step-2').addEventListener('click', () => {
+            console.log('Step 2 Back');
             document.getElementById('step-2').style.display = 'none';
             document.getElementById('step-1').style.display = 'block';
         });
         
         document.getElementById('back-step-3').addEventListener('click', () => {
+            console.log('Step 3 Back');
             document.getElementById('step-3').style.display = 'none';
             document.getElementById('step-2').style.display = 'block';
         });
         
         document.getElementById('back-step-4').addEventListener('click', () => {
+            console.log('Step 4 Back');
             document.getElementById('step-4').style.display = 'none';
             document.getElementById('step-3').style.display = 'block';
         });
         
         document.getElementById('back-step-5').addEventListener('click', () => {
+            console.log('Step 5 Back');
             document.getElementById('step-5').style.display = 'none';
             document.getElementById('step-4').style.display = 'block';
         });
         
         document.getElementById('mount-type').addEventListener('change', (e) => {
+            console.log('Mount Type Changed');
             if (e.target.value === 'outside') {
                 document.getElementById('excess-label').style.display = 'block';
                 document.getElementById('excess').style.display = 'block';
@@ -389,6 +399,7 @@
         });
         document.getElementById('generate-quotation').addEventListener('click', (event) => {
             event.preventDefault();
+            console.log('generate quatation');
             const width = document.getElementById('width').value;
             const height = document.getElementById('height').value;
             const mountType = document.getElementById('mount-type').value;
@@ -415,6 +426,7 @@
         });
         
         document.getElementById('download-pdf').addEventListener('click', () => {
+            console.log('DL PDF');
             const quotationText = document.getElementById('quotation-text').innerText;
         
             const doc = new jsPDF();
