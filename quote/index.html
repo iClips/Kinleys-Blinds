@@ -18,6 +18,7 @@
 
         body {
             font-family: "Poppins", sans-serif;
+            font-family: Arial, sans-serif;
             background-color: var(--background-color);
             color: var(--text-color);
             margin: 0;
@@ -227,7 +228,57 @@
             max-width: 550px;
             text-align: center;
         }
-      
+
+
+        .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        }
+        
+        .steps-container {
+            margin-top: 20px;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .step {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        }
+        
+        .step.active {
+        background-color: #333;
+        color: #fff;
+        }
+        
+        .step-content {
+        padding: 20px;
+        }
+        
+        .step-1, .step-2, .step-3 {
+        display: none;
+        }
+        
+        .step-1.active, .step-2.active, .step-3.active {
+        display: block;
+        }
     </style>
 </head>
 <body>
@@ -240,6 +291,60 @@
             <li><a target="_blank" href="https://www.instagram.com/kinleysblinds/?hl=en"><span class="fa fa-instagram"></span></a></li>
         </ul>
     </header>
+    <div class="container">
+        <header>
+            <h1>Kinleys Blinds Quote</h1>
+        </header>
+        <div class="steps-container">
+            <div class="steps">
+                <div class="step active" data-step="1">
+                    <h2>Step 1: Customer Details</h2>
+                </div>
+                <div class="step" data-step="2">
+                    <h2>Step 2: Blind Options</h2>
+                </div>
+                <div class="step" data-step="3">
+                    <h2>Step 3: Review and Submit</h2>
+                </div>
+            </div>
+            <div class="step-content">
+                <!-- Step 1 content -->
+                <div class="step-1 active">
+                    <form>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name"><br><br>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email"><br><br>
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone"><br><br>
+                    </form>
+                </div>
+                <!-- Step 2 content -->
+                <div class="step-2">
+                    <form>
+                        <label for="blind-type">Blind Type:</label>
+                        <select id="blind-type" name="blind-type">
+                            <option value="vertical">Vertical</option>
+                            <option value="horizontal">Horizontal</option>
+                        </select><br><br>
+                        <label for="blind-size">Blind Size:</label>
+                        <input type="number" id="blind-size" name="blind-size"><br><br>
+                        <label for="blind-material">Blind Material:</label>
+                        <select id="blind-material" name="blind-material">
+                            <option value="fabric">Fabric</option>
+                            <option value="wood">Wood</option>
+                        </select><br><br>
+                    </form>
+                </div>
+                <!-- Step 3 content -->
+                <div class="step-3">
+                    <h2>Review and Submit</h2>
+                    <p>Please review your details and submit the quote.</p>
+                    <button>Submit Quote</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="step-container">
         <div class="step active">Step 1: Upload Image</div>
         <div class="step">Step 2: Enter Dimensions</div>
@@ -320,6 +425,18 @@
     </div>
     
     <script>
+        const steps = document.querySelectorAll('.step');
+        const stepContent = document.querySelectorAll('.step-content div');
+        
+        steps.forEach((step, index) => {
+            step.addEventListener('click', () => {
+                steps.forEach((s) => s.classList.remove('active'));
+                step.classList.add('active');
+        
+                stepContent.forEach((content) => content.classList.remove('active'));
+                stepContent[index].classList.add('active');
+            });
+        });
         document.getElementById('next-step-1').addEventListener('click', () => {
             console.log('Step 1 Next');
             document.getElementById('step-1').style.display = 'none';
