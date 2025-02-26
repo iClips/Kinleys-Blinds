@@ -243,8 +243,9 @@
     <div class="step-container">
         <div class="step active">Step 1: Upload Image</div>
         <div class="step">Step 2: Enter Dimensions</div>
-        <div class="step">Step 3: Choose Mount Type</div>
-        <div class="step">Step 4: Choose Color</div>
+        <div class="step">Step 3: Choose Blind Type</div>
+        <div class="step">Step 4: Choose Mount Type</div>
+        <div class="step">Step 5: Choose Color</div>
     </div>
 
     <form id="quotation-form">
@@ -266,8 +267,24 @@
             <button class="button" id="next-step-2">Next</button>
         </div>
 
-        <!-- Step 3: Choose Mount Type -->
+        <!-- Step 3: Choose Blind Type -->
         <div id="step-3" style="display: none;">
+            <label for="blind-type">Blind Type:</label>
+            <select id="blind-type" required>
+                <option value="">Select Blind Type</option>
+                <option value="roman">Roman</option>
+                <option value="roller">Roller</option>
+                <option value="aluminium">Aluminium</option>
+                <option value="pvc">PVC</option>
+                <option value="wood">Wood</option>
+            </select>
+            <br>
+            <button class="button" id="back-step-3">Back</button>
+            <button class="button" id="next-step-3">Next</button>
+        </div>
+
+        <!-- Step 4: Choose Mount Type -->
+        <div id="step-4" style="display: none;">
             <label for="mount-type">Mount Type:</label>
             <select id="mount-type" required>
                 <option value="">Select Mount Type</option>
@@ -275,15 +292,12 @@
                 <option value="outside">Outside Mount</option>
             </select>
             <br>
-            <label for="excess" style="display: none;" id="excess-label">Excess (cm):</label>
-            <input type="number" id="excess" style="display: none;" value="3">
-            <br>
-            <button class="button" id="back-step-3">Back</button>
-            <button class="button" id="next-step-3">Next</button>
+            <button class="button" id="back-step-4">Back</button>
+            <button class="button" id="next-step-4">Next</button>
         </div>
 
-        <!-- Step 4: Choose Color -->
-        <div id="step-4" style="display: none;">
+        <!-- Step 5: Choose Color -->
+        <div id="step-5" style="display: none;">
             <label for="color">Color:</label>
             <select id="color" required>
                 <option value="">Select Color</option>
@@ -291,9 +305,10 @@
                 <option value="premium">Premium (+5%)</option>
             </select>
             <br>
-            <button class="button" id="back-step-4">Back</button>
+            <button class="button" id="back-step-5">Back</button>
             <button class="button" id="generate-quotation">Generate Quotation</button>
         </div>
+    </form>
 
         <!-- Quotation Result -->
         <div id="quotation-result" style="display: none;">
@@ -304,20 +319,11 @@
     </form>
     
     <script>
-        // Step 1: Upload Image
         document.getElementById('next-step-1').addEventListener('click', () => {
             document.getElementById('step-1').style.display = 'none';
             document.getElementById('step-2').style.display = 'block';
             document.querySelectorAll('.step')[0].classList.remove('active');
             document.querySelectorAll('.step')[1].classList.add('active');
-        });
-        
-        // Step 2: Enter Dimensions
-        document.getElementById('back-step-2').addEventListener('click', () => {
-            document.getElementById('step-2').style.display = 'none';
-            document.getElementById('step-1').style.display = 'block';
-            document.querySelectorAll('.step')[1].classList.remove('active');
-            document.querySelectorAll('.step')[0].classList.add('active');
         });
         
         document.getElementById('next-step-2').addEventListener('click', () => {
@@ -333,24 +339,6 @@
             }
         });
         
-        // Step 3: Choose Mount Type
-        document.getElementById('back-step-3').addEventListener('click', () => {
-            document.getElementById('step-3').style.display = 'none';
-            document.getElementById('step-2').style.display = 'block';
-            document.querySelectorAll('.step')[2].classList.remove('active');
-            document.querySelectorAll('.step')[1].classList.add('active');
-        });
-        
-        document.getElementById('mount-type').addEventListener('change', (e) => {
-            if (e.target.value === 'outside') {
-                document.getElementById('excess-label').style.display = 'block';
-                document.getElementById('excess').style.display = 'block';
-            } else {
-                document.getElementById('excess-label').style.display = 'none';
-                document.getElementById('excess').style.display = 'none';
-            }
-        });
-        
         document.getElementById('next-step-3').addEventListener('click', () => {
             const mountType = document.getElementById('mount-type').value;
             if (mountType) {
@@ -363,14 +351,42 @@
             }
         });
         
-        // Step 4: Choose Color
+        document.getElementById('next-step-4').addEventListener('click', () => {
+            document.getElementById('step-4').style.display = 'none';
+            document.getElementById('step-5').style.display = 'block';
+            document.querySelectorAll('.step')[3].classList.remove('active');
+            document.querySelectorAll('.step')[4].classList.add('active');
+        });
+        
+        document.getElementById('back-step-2').addEventListener('click', () => {
+            document.getElementById('step-2').style.display = 'none';
+            document.getElementById('step-1').style.display = 'block';
+        });
+        
+        document.getElementById('back-step-3').addEventListener('click', () => {
+            document.getElementById('step-3').style.display = 'none';
+            document.getElementById('step-2').style.display = 'block';
+        });
+        
         document.getElementById('back-step-4').addEventListener('click', () => {
             document.getElementById('step-4').style.display = 'none';
             document.getElementById('step-3').style.display = 'block';
-            document.querySelectorAll('.step')[3].classList.remove('active');
-            document.querySelectorAll('.step')[2].classList.add('active');
         });
         
+        document.getElementById('back-step-5').addEventListener('click', () => {
+            document.getElementById('step-5').style.display = 'none';
+            document.getElementById('step-4').style.display = 'block';
+        });
+        
+        document.getElementById('mount-type').addEventListener('change', (e) => {
+            if (e.target.value === 'outside') {
+                document.getElementById('excess-label').style.display = 'block';
+                document.getElementById('excess').style.display = 'block';
+            } else {
+                document.getElementById('excess-label').style.display = 'none';
+                document.getElementById('excess').style.display = 'none';
+            }
+        });
         document.getElementById('generate-quotation').addEventListener('click', (event) => {
             event.preventDefault();
             const width = document.getElementById('width').value;
