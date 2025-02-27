@@ -182,12 +182,17 @@ function initScrollEffects() {
             if (currentScroll > lastScrollTop) {
                 topNav.classList.add('hidden');
                 navBar.classList.add('show');
-                navBar.style.top = "0px";
+                navBar.style.transform = "translateY(0px)";
+
+                console.log('navBar top 0 pixels');
             } else if (currentScroll <= 0) {
                 topNav.classList.remove('hidden');
                 navBar.classList.remove('show');
+
+                console.log('showing top bar');
             } else {
                 navBar.classList.add('show');
+                console.log('nav...');
             }
 
             lastScrollTop = Math.max(0, currentScroll);
