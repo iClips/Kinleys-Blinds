@@ -8,21 +8,51 @@ let heroAnimationInterval = null;
 let isMenuOpen = false;
 let timeout = null;
 
-const loadingElement = document.getElementById("loading");
-if (loadingElement) {
-    timeout = setTimeout(() => {
-        loadingElement.style.transition = "opacity 0.5s";
-        loadingElement.style.opacity = "0";
-        setTimeout(() => {
-            loadingElement.style.display = 'none';
-        }, 500);
-    }, 5000); // 5 seconds timeout
-    
-        
-} else {
-    console.log('no loading elem');
+// Create an array of image objects
+const images = [
+  // { src: 'assets/images/gallery/kitchen3.jpg', alt: 'Image 1' },
+  // { src: 'assets/images/gallery/bath3.jpg', alt: 'Bath 2' },
+  // { src: 'assets/images/gallery/sit3.jpg', alt: 'Image 3' },
+  // { src: 'assets/images/gallery/study3.jpg', alt: 'Study 4' },
+  // { src: 'assets/images/recent-projects/recent_0_before.jpg', alt: 'Recent Project 1 Before' },
+  // { src: 'assets/images/recent-projects/recent_0_after.jpg', alt: 'Recent Project 1 After' },
+  // { src: 'assets/images/recent-projects/recent_1_before.jpg', alt: 'Recent Project 2 Before' },
+  // { src: 'assets/images/recent-projects/recent_1_after.jpg', alt: 'Recent Project 2 After' },
+  { src: 'assets/images/recent-projects/recent3.jpg', alt: 'Recent Project 3' },
+  { src: 'assets/images/recent-projects/recent4.jpg', alt: 'Recent Project 4' },
+  { src: 'assets/images/testimonials/testimonial_img1.png', alt: 'Shameema Arendse' },
+  { src: 'assets/images/testimonials/testimonialJpsSimons.jpg', alt: 'Jps Simons' },
+];
+
+// Function to load images dynamically
+function loadImages() {
+  const imageContainer = document.getElementById('image-container');
+  images.forEach((image) => {
+    const img = document.createElement('img');
+    img.src = image.src;
+    img.alt = image.alt;
+    imageContainer.appendChild(img);
+  });
 }
+
 document.addEventListener('DOMContentLoaded', function () {
+    loadImages();
+    const loadingElement = document.getElementById("loading");
+    if (loadingElement) {
+        timeout = setTimeout(() => {
+            loadingElement.style.transition = "opacity 0.5s";
+            loadingElement.style.opacity = "0";
+            setTimeout(() => {
+                loadingElement.style.display = 'none';
+            }, 500);
+        }, 5000); // 5 seconds timeout
+        
+            
+    } else {
+        console.log('no loading elem');
+        alert('no loading elem');
+    }
+
     initSectionAnimations();
     initHeroAnimation();
     initScrollEffects();
