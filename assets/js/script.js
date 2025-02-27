@@ -9,7 +9,6 @@ let isMenuOpen = false;
 let timeout = null;
 
 // Create an array of image objects
-const images = [
   // { src: 'assets/images/gallery/kitchen3.jpg', alt: 'Image 1' },
   // { src: 'assets/images/gallery/bath3.jpg', alt: 'Bath 2' },
   // { src: 'assets/images/gallery/sit3.jpg', alt: 'Image 3' },
@@ -18,6 +17,7 @@ const images = [
   // { src: 'assets/images/recent-projects/recent_0_after.jpg', alt: 'Recent Project 1 After' },
   // { src: 'assets/images/recent-projects/recent_1_before.jpg', alt: 'Recent Project 2 Before' },
   // { src: 'assets/images/recent-projects/recent_1_after.jpg', alt: 'Recent Project 2 After' },
+const images = [
   { src: 'assets/images/recent-projects/recent3.jpg', alt: 'Recent Project 3' },
   { src: 'assets/images/recent-projects/recent4.jpg', alt: 'Recent Project 4' },
   { src: 'assets/images/testimonials/testimonial_img1.png', alt: 'Shameema Arendse' },
@@ -53,7 +53,6 @@ timeout = setTimeout(() => {
 }, 5000); // 5 seconds timeout
 
 document.addEventListener('DOMContentLoaded', function () {
-    loadImages();
     
     initSectionAnimations();
     initHeroAnimation();
@@ -61,6 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initIntoViewAnim();
 
     observeElements('caption');
+    
+    loadImages();
 });
 
 const observeElements = (className) => {
