@@ -27,12 +27,16 @@ const images = [
 // Function to load images dynamically
 function loadImages() {
   const imageContainer = document.getElementById('image-container');
-  images.forEach((image) => {
-    const img = document.createElement('img');
-    img.src = image.src;
-    img.alt = image.alt;
-    imageContainer.appendChild(img);
-  });
+  if (imageContainer) {
+    images.forEach((image) => {
+      const img = document.createElement('img');
+      img.src = image.src;
+      img.alt = image.alt;
+      imageContainer.appendChild(img);
+    });
+  } else {
+    console.error('Image container element not found');
+  }
 }
 
 let loadingElement;
