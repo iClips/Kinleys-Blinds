@@ -175,28 +175,29 @@ function initScrollEffects() {
 
     if (!topNav || !navBar) return;
 
+    let lastScrollTop = 0;
+
     window.addEventListener('scroll', () => {
-        if (window.innerWidth >= 768) {
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (currentScroll > lastScrollTop) {
-                topNav.classList.add('hidden');
-                navBar.classList.add('show');
-                navBar.style.transform = "translateY(0px)";
-
-                console.log('navBar top 0 pixels');
-            } else if (currentScroll <= 0) {
-                topNav.classList.remove('hidden');
-                navBar.classList.remove('show');
-
-                console.log('showing top bar');
-            } else {
-                navBar.classList.add('show');
-                console.log('nav...');
-            }
-
-            lastScrollTop = Math.max(0, currentScroll);
+      if (window.innerWidth >= 768) {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+        if (currentScroll > lastScrollTop) {
+          // Scrolling down
+          topNav.classList.add('hidden');
+          navBar.classList.add('show');
+          navBar.style.transform = "translateY(0px)";
+        } else if (currentScroll <= 0) {
+          // At the top of the page
+          topNav.classList.remove('hidden');
+          navBar.classList.remove('show');
+          navBar.style.transform = "translateY(40px)";
+        } else {
+          // Scrolling up
+          navBar.classList.add('show');
         }
+    
+        lastScrollTop = currentScroll;
+      }
     });
 }
 
