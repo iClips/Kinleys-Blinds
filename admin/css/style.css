@@ -9,17 +9,25 @@ body {
 .topnav {
   background-color: #333;
   overflow: hidden;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+/*   color: #f2f2f2; */
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  color: #337ab7;
 }
 
 /* Change the color of links on hover */
@@ -31,12 +39,25 @@ body {
 /* Add an active class to highlight the current page */
 .topnav a.active {
   background-color: #04AA6D;
-  color: white;
+  color: #23527c;
+  border-bottom: 2px solid #23527c;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
   display: none;
+}
+
+.tab-content {
+  padding: 20px;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
 }
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
