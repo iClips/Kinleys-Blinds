@@ -22,3 +22,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 });
+
+// Get the tab navigation elements
+const tabNav = document.querySelectorAll('.topnav a');
+
+// Add event listeners to each tab navigation element
+tabNav.forEach((tab) => {
+  tab.addEventListener('click', (e) => {
+    // Get the target tab pane
+    const targetTabPane = document.querySelector(e.target.getAttribute('href'));
+
+    // Hide all tab panes
+    document.querySelectorAll('.tab-pane').forEach((pane) => {
+      pane.classList.remove('active');
+    });
+
+    // Show the target tab pane
+    targetTabPane.classList.add('active');
+
+    // Update the active tab navigation element
+    document.querySelectorAll('.topnav a').forEach((navTab) => {
+      navTab.classList.remove('active');
+    });
+    e.target.classList.add('active');
+  });
+});
