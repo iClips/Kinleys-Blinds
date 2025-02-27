@@ -35,24 +35,26 @@ function loadImages() {
   });
 }
 
+let loadingElement;
+
+timeout = setTimeout(() => {
+    if (!loadingElement) {
+        loadingElement = document.getElementById("loading");
+    }
+    if (loadingElement) {
+        loadingElement.style.transition = "opacity 0.5s";
+        loadingElement.style.opacity = "0";
+        setTimeout(() => {
+            loadingElement.style.display = 'none';
+        }, 500);
+    } else {
+        alert('Call the developer');
+    }
+}, 5000); // 5 seconds timeout
+
 document.addEventListener('DOMContentLoaded', function () {
     loadImages();
-    const loadingElement = document.getElementById("loading");
-    if (loadingElement) {
-        timeout = setTimeout(() => {
-            loadingElement.style.transition = "opacity 0.5s";
-            loadingElement.style.opacity = "0";
-            setTimeout(() => {
-                loadingElement.style.display = 'none';
-            }, 500);
-        }, 5000); // 5 seconds timeout
-        
-            
-    } else {
-        console.log('no loading elem');
-        alert('no loading elem');
-    }
-
+    
     initSectionAnimations();
     initHeroAnimation();
     initScrollEffects();
