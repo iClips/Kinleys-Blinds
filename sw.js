@@ -6,7 +6,6 @@ const assetsToCache = [
   "assets/css/styles.css",
   "assets/js/jquery-1.12.1.min.js",
   "assets/js/bootstrap.min.js",
-  "assets/js/jquery-1.12.1.min.js",
   "assets/js/script.js",
   "assets/js/jquery.fancybox.min.js",
   "assets/js/jquery.scrollUp.min.js",
@@ -14,47 +13,39 @@ const assetsToCache = [
   "offline.html"
 ];
 
+// Use the 'cache-first' strategy
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(cacheResponse => {
+      return cacheResponse || fetch(event.request).then(networkResponse => {
+        return caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+      });
+    }).catch(error => {
+      console.error("Error fetching resource:", error);
+      return caches.match(OFFLINE_URL);
+    })
+  );
+});
+
+// Install event: cache assets and skip waiting
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       return cache.addAll(assetsToCache).then(() => {
-        return cache.keys().then(keys => {
-          return Promise.all(keys.map(key => {
-            return cache.get(key).then(response => {
-              if (response.headers.get('Content-Length') === '0') {
-                return fetch(key).then(networkResponse => {
-                  return cache.put(key, networkResponse.clone());
-                });
-              }
-            });
-          }));
-        });
+        return self.skipWaiting();
       });
     })
   );
-  self.skipWaiting();
 });
 
+// Activate event: delete old caches
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys => {
-      return Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-      );
-    })
-  );
-});
-
-self.addEventListener("fetch", event => {
-  event.respondWith(
-    fetch(event.request).catch(() => {
-      return caches.match(event.request).then(cacheResponse => {
-        if (cacheResponse) {
-          return cacheResponse;
-        } else {
-          return caches.match(OFFLINE_URL);
-        }
-      });
+      return Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)));
     })
   );
 });
