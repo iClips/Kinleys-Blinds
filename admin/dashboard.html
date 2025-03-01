@@ -20,27 +20,44 @@
             </a>
         </div>        
         
-        <!-- Tab content containers -->
         <div class="tab-content">
-            <div id="dashboard" class="tab-pane active">
-                <!-- dashboard container content goes here -->
-            </div>
-            <div id="products" class="tab-pane">
-            <!-- Products container content goes here -->
-            </div>
-            <div id="quotations" class="tab-pane">
-            <!-- Quotations container content goes here -->
-            </div>
-            <div id="invoices" class="tab-pane">
-            <!-- invoices container content goes here -->
-            </div>
-            <div id="orders" class="tab-pane">
-            <!-- orders container content goes here -->
-            </div>
-            <div id="customers" class="tab-pane">
-            <!-- customers container content goes here -->
-            </div>
-        </div>
+          <div id="dashboard" class="tab-pane active">
+            <h2>Dashboard</h2>
+            <form id="product-form">
+              <h3>Product Categories</h3>
+              <input type="text" id="category-name" placeholder="Category name">
+              <textarea id="category-description" placeholder="Description"></textarea>
+              <button id="add-category-btn">Add Category</button>
+              
+              <h3>Products</h3>
+              <input type="text" id="product-name" placeholder="Product name">
+              <select id="product-category">
+                <!-- Categories will be populated dynamically -->
+              </select>
+              <textarea id="product-description" placeholder="Description"></textarea>
+              <button id="add-product-btn">Add Product</button>
+              
+              <h3>Pricing</h3>
+              <input type="text" id="price-list-name" placeholder="Price list name">
+              <select id="price-list-product">
+                <!-- Products will be populated dynamically -->
+              </select>
+              <table id="price-table">
+                <!-- Price table will be populated dynamically -->
+              </table>
+              <button id="add-price-list-btn">Add Price List</button>
+              
+              <h3>Extras</h3>
+              <input type="text" id="extra-name" placeholder="Extra name">
+              <input type="number" id="extra-price" placeholder="Price">
+              <button id="add-extra-btn">Add Extra</button>
+              
+              <h3>Valances</h3>
+              <input type="text" id="valance-name" placeholder="Valance name">
+              <input type="number" id="valance-price" placeholder="Price">
+              <button id="add-valance-btn">Add Valance</button>
+            </form>
+          </div>
         <script src="./js/main.js"></script>
     </body>
 </html>
